@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Devanshu Patil - Full Stack Developer specializing in scalable web applications, REST APIs, and AI integrations">
+    <meta name="keywords" content="full stack developer, web developer, React, Node.js, Spring Boot, Java, JavaScript">
+    <meta name="author" content="Devanshu Patil">
+    <meta name="theme-color" content="#0a0e27">
+    <title>Devanshu Patil | Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-text">DP</span>
+                <span class="logo-dot"></span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-particles"></div>
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="greeting">Hello, I'm</p>
+                <h1 class="hero-name">Devanshu Patil</h1>
+                <h2 class="hero-title">Full Stack Developer</h2>
+                <p class="hero-tagline">Building scalable web applications and intelligent systems using modern
+                    technologies.</p>
+                <div class="typing-container">
+                    <span class="typing-label">Tech: </span>
+                    <span class="typing-text" id="typing-text"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <span class="btn-text">View Projects</span>
+                        <span class="btn-glow"></span>
+                        <span class="btn-shine"></span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span class="btn-text">Contact Me</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="profile-container">
+                    <div class="profile-frame">
+                        <div class="profile-placeholder">
+                            <img src="closeup.jpeg" alt="Devanshu Patil" class="profile-img">
+                        </div>
+                        <div class="profile-ring"></div>
+                        <div class="profile-ring ring-2"></div>
+                    </div>
+                    <div class="floating-badge badge-1">
+                        <span class="badge-icon">⚡</span>
+                        <span class="badge-text">Fast</span>
+                    </div>
+                    <div class="floating-badge badge-2">
+                        <span class="badge-icon">🎯</span>
+                        <span class="badge-text">Clean</span>
+                    </div>
+                    <div class="floating-badge badge-3">
+                        <span class="badge-icon">🚀</span>
+                        <span class="badge-text">Scale</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator">
+            <span class="scroll-text">Scroll Down</span>
+            <div class="scroll-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+                </svg>
+            </div>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Get to know</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-card">
+                        <div class="about-card-inner">
+                            <div class="about-avatar">
+                                <img src="full_pic.jpeg" alt="Devanshu Patil" class="about-img">
+                            </div>
+                            <div class="about-card-glow"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Full-Stack Developer</h3>
+                    <p>
+                        I'm a passionate Full Stack Developer with expertise in building end-to-end web applications.
+                        With a strong foundation in both frontend and backend technologies, I create scalable,
+                        performant, and user-friendly solutions.
+                    </p>
+                    <p>
+                        My technical stack includes <strong>Java, JavaScript, Node.js, React, Spring Boot</strong>,
+                        and databases like <strong>PostgreSQL and MongoDB</strong>. I specialize in developing
+                        <strong>REST APIs, implementing authentication systems (JWT, OAuth)</strong>, and deploying
+                        applications using <strong>Docker and GCP</strong>.
+                    </p>
+                    <p>
+                        I have a problem-solving mindset and love tackling complex challenges. I'm particularly
+                        interested in <strong>AI integrations</strong> and building intelligent systems that add
+                        real value to users. When I'm not coding, you'll find me exploring new technologies
+                        and contributing to open-source projects.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="3">0</span>
+                            <span class="stat-label">+ Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="15">0</span>
+                            <span class="stat-label">+ Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="10">0</span>
+                            <span class="stat-label">+ Happy Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">What I work with</span>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="category-icon">🎨</span>
+                        <h3>Frontend</h3>
+                    </div>
+                    <div class="skill-cards">
+                        <div class="skill-card" data-skill="HTML">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">&#60;/&#62;</span>
+                                <span class="skill-name">HTML</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="CSS">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">#</span>
+                                <span class="skill-name">CSS</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="JavaScript">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">JS</span>
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="React">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">⚛</span>
+                                <span class="skill-name">React</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="category-icon">⚙️</span>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-cards">
+                        <div class="skill-card" data-skill="Node.js">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">N</span>
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="Express">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">E</span>
+                                <span class="skill-name">Express.js</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="Spring Boot">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">S</span>
+                                <span class="skill-name">Spring Boot</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 82%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="REST APIs">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">API</span>
+                                <span class="skill-name">REST APIs</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="Auth">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">🔐</span>
+                                <span class="skill-name">JWT/OAuth</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="category-icon">🗄️</span>
+                        <h3>Database</h3>
+                    </div>
+                    <div class="skill-cards">
+                        <div class="skill-card" data-skill="PostgreSQL">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">PG</span>
+                                <span class="skill-name">PostgreSQL</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="MongoDB">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">M</span>
+                                <span class="skill-name">MongoDB</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-header">
+                        <span class="category-icon">☁️</span>
+                        <h3>Tools & Cloud</h3>
+                    </div>
+                    <div class="skill-cards">
+                        <div class="skill-card" data-skill="GitHub">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">GH</span>
+                                <span class="skill-name">GitHub</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="Docker">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">D</span>
+                                <span class="skill-name">Docker</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="GCP">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">GCP</span>
+                                <span class="skill-name">GCP</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="Netlify">
+                            <div class="skill-card-inner">
+                                <span class="skill-icon">N</span>
+                                <span class="skill-name">Netlify</span>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="--progress: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">What I've built</span>
+                <h2 class="section-title">Projects</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1: Online Learning Platform -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg viewBox="0 0 400 250" class="project-placeholder-svg">
+                                <rect x="0" y="0" width="400" height="250" fill="#1e1b4b" />
+                                <circle cx="200" cy="100" r="40" fill="#6366f1" opacity="0.5" />
+                                <path d="M180 100 L200 80 L220 100 L200 120 Z" fill="#06b6d4" />
+                                <rect x="120" y="160" width="160" height="10" rx="5" fill="#4f46e5" opacity="0.7" />
+                                <rect x="140" y="180" width="120" height="8" rx="4" fill="#6366f1" opacity="0.5" />
+                                <rect x="150" y="200" width="100" height="8" rx="4" fill="#06b6d4" opacity="0.5" />
+                            </svg>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <span class="project-icon">🎓</span>
+                                <h4>Online Learning Platform</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Online Learning Platform</h3>
+                        <p class="project-description">
+                            A comprehensive e-learning platform with role-based dashboards, JWT authentication,
+                            course management, attendance tracking, and LLM-powered question extraction for AI
+                            integration.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">GCP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/devanshupatil/Online-Learning-Portal" class="project-btn"
+                                target="_blank" rel="noopener noreferrer">
+                                <span class="btn-icon">📂</span>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://online-learning-portal-ten.vercel.app/" class="project-btn primary"
+                                target="_blank" rel="noopener noreferrer">
+                                <span class="btn-icon">🚀</span>
+                                <span>Live Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- Project 2: Marriage Biodata Builder -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg viewBox="0 0 400 250" class="project-placeholder-svg">
+                                <rect x="0" y="0" width="400" height="250" fill="#1e1b4b" />
+                                <rect x="100" y="40" width="200" height="170" rx="10" fill="#4f46e5" opacity="0.4" />
+                                <circle cx="200" cy="90" r="35" fill="#6366f1" opacity="0.6" />
+                                <rect x="140" y="140" width="120" height="10" rx="5" fill="#06b6d4" opacity="0.7" />
+                                <rect x="150" y="160" width="100" height="8" rx="4" fill="#a5b4fc" opacity="0.5" />
+                                <rect x="160" y="180" width="80" height="8" rx="4" fill="#a5b4fc" opacity="0.5" />
+                                <rect x="120" y="200" width="160" height="8" rx="4" fill="#6366f1" opacity="0.5" />
+                            </svg>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <span class="project-icon">📝</span>
+                                <h4>Marriage Biodata Builder</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Marriage Biodata Builder</h3>
+                        <p class="project-description">
+                            An intuitive biodata builder with dynamic forms, live preview functionality,
+                            and PDF download capability for creating professional marriage profiles.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">jsPDF</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-btn" target="_blank" rel="noopener noreferrer">
+                                <span class="btn-icon">📂</span>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://marriage-biodata-builder.vercel.app/" class="project-btn primary"
+                                target="_blank" rel="noopener noreferrer">
+                                <span class="btn-icon">🚀</span>
+                                <span>Live Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3: SagarShop E-commerce -->
+                <article class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg viewBox="0 0 400 250" class="project-placeholder-svg">
+                                <rect x="0" y="0" width="400" height="250" fill="#1e1b4b" />
+                                <rect x="80" y="60" width="100" height="80" rx="10" fill="#4f46e5" opacity="0.5" />
+                                <rect x="220" y="60" width="100" height="80" rx="10" fill="#6366f1" opacity="0.5" />
+                                <rect x="60" y="160" width="120" height="15" rx="7" fill="#06b6d4" opacity="0.7" />
+                                <rect x="220" y="160" width="120" height="15" rx="7" fill="#4f46e5" opacity="0.7" />
+                                <circle cx="100" cy="180" r="8" fill="#22c55e" />
+                                <circle cx="260" cy="180" r="8" fill="#22c55e" />
+                            </svg>
+                        </div>
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <span class="project-icon">🛒</span>
+                                <h4>SagarShop E-commerce</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">SagarShop E-commerce</h3>
+                        <p class="project-description">
+                            A full-featured e-commerce platform with admin panel, product management,
+                            order management, REST APIs, and seamless database integration using Supabase.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/devanshupatil/Sagar-Shop" class="project-btn" target="_blank"
+                                rel="noopener noreferrer">
+                                <span class="btn-icon">📂</span>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://sagarshop.vercel.app/" class="project-btn primary" target="_blank"
+                                rel="noopener noreferrer">
+                                <span class="btn-icon">🚀</span>
+                                <span>Live Demo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Recognition & Awards</span>
+                <h2 class="section-title">Achievements</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="achievements-container">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <svg viewBox="0 0 100 100" class="achievement-svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#6366f1" stroke-width="3" />
+                            <path d="M30 50 L45 65 L70 40" fill="none" stroke="#06b6d4" stroke-width="4"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="achievement-content">
+                        <h3>Hacktoberfest 2023 Participant</h3>
+                        <p>Contributed to open-source projects during Hacktoberfest 2023, a month-long celebration of
+                            open source software.</p>
+                    </div>
+                    <div class="achievement-badge">
+                        <span class="badge-year">2023</span>
+                    </div>
+                </div>
+                <div class="achievement-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2023</span>
+                            <h4>Hacktoberfest Participant</h4>
+                            <p>Made significant contributions to open-source projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Get in touch</span>
+                <h2 class="section-title">Contact Me</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Have a project in mind or want to collaborate? Feel free to reach out!</p>
+                    <div class="contact-links">
+                        <a href="mailto:devanshu.patil@example.com" class="contact-link">
+                            <span class="contact-link-icon">✉️</span>
+                            <span class="contact-link-text">devanshu.patil@example.com</span>
+                        </a>
+                        <a href="https://linkedin.com/in/devanshu-patil" class="contact-link" target="_blank"
+                            rel="noopener noreferrer">
+                            <span class="contact-link-icon">💼</span>
+                            <span class="contact-link-text">LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/devanshu-patil" class="contact-link" target="_blank"
+                            rel="noopener noreferrer">
+                            <span class="contact-link-icon">🐙</span>
+                            <span class="contact-link-text">GitHub</span>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                        <span class="form-error" id="name-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                        <span class="form-error" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <label for="message">Your Message</label>
+                        <span class="form-error" id="message-error"></span>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon">📨</span>
+                    </button>
+                    <div class="form-success" id="form-success">
+                        <span class="success-icon">✅</span>
+                        <span>Message sent successfully! I'll get back to you soon.</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">DP</span>
+                    <span class="logo-dot"></span>
+                </div>
+                <p class="footer-text">© 2026 Devanshu Patil. Designed & Built with HTML, CSS & JavaScript</p>
+                <div class="social-links">
+                    <a href="https://github.com/devanshu-patil" class="social-link" target="_blank"
+                        rel="noopener noreferrer" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/devanshu-patil" class="social-link" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:devanshu.patil@example.com" class="social-link" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6" />
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
