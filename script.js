@@ -358,29 +358,50 @@ function initContactForm() {
             isValid = false;
         }
         
-        // If valid, show success message
+        // If valid, send via EmailJS
         if (isValid) {
-            // Simulate form submission
             const submitBtn = form.querySelector('.submit-btn');
             const originalText = submitBtn.innerHTML;
-            
+
             submitBtn.innerHTML = '<span class="btn-text">Sending...</span>';
             submitBtn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                form.reset();
+
+            // Guard: EmailJS must be loaded & initialized (index.html)
+            if (typeof emailjs === 'undefined') {
+                console.error('EmailJS SDK not loaded. Make sure email.min.js is included before script.js');
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-                
-                // Show success message
-                formSuccess.classList.add('show');
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    formSuccess.classList.remove('show');
-                }, 5000);
-            }, 1500);
+                alert('Email service is not available right now. Please try again later.');
+                return;
+            }
+
+            const templateParams = {
+                from_name: name,
+                reply_to: email,
+                message: message,
+            };
+
+            emailjs
+                .send('service_9boenab', 'template_am4ydxr', templateParams)
+                .then(() => {
+                    form.reset();
+
+                    // Show success message
+                    formSuccess?.classList.add('show');
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formSuccess?.classList.remove('show');
+                    }, 5000);
+                })
+                .catch((err) => {
+                    console.error('EmailJS send failed:', err);
+                    alert('Failed to send message. Please try again.');
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
         }
     });
     
@@ -402,7 +423,7 @@ function initContactForm() {
     });
     
     function validateField(input) {
-        const value = value.trim();
+        const value = (input?.value || '').trim();
         
         if (input.id === 'name' && value.length < 2) {
             showError('name', 'Name must be at least 2 characters');
