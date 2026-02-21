@@ -1244,6 +1244,13 @@ input, textarea {
     font-size: 1.3rem;
 }
 
+/* When we use SVG icons (same as footer) inside contact links */
+.contact-link-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
 .contact-link-text {
     font-weight: 500;
     color: var(--text-secondary);
