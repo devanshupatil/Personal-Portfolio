@@ -1572,7 +1572,15 @@ input, textarea {
     }
     
     .hero {
-        padding: 100px 0 60px;
+        /* Extra bottom space so the absolute scroll indicator never overlaps
+           the stacked hero buttons on smaller screens */
+        padding: 100px 0 140px;
+    }
+
+    /* Ensure hero CTAs remain clickable even if the scroll indicator area overlaps */
+    .hero-buttons {
+        position: relative;
+        z-index: 2;
     }
     
     .hero-name {
@@ -1594,6 +1602,17 @@ input, textarea {
     }
     
     .floating-badge {
+        display: none;
+    }
+
+    /* Scroll indicator: keep it clear of hero CTAs on mobile */
+    .scroll-indicator {
+        bottom: 20px;
+        z-index: 1;
+    }
+
+    /* Save vertical space on mobile */
+    .scroll-text {
         display: none;
     }
     
@@ -1637,6 +1656,21 @@ input, textarea {
     
     .btn {
         width: 100%;
+    }
+
+    /* A bit more clearance for very small screens */
+    .hero {
+        padding-bottom: 160px;
+    }
+
+    .scroll-indicator {
+        bottom: 16px;
+        gap: 6px;
+    }
+
+    .scroll-arrow {
+        width: 20px;
+        height: 20px;
     }
     
     .contact-form {
