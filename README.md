@@ -13,9 +13,7 @@ Modern, responsive, and animated **personal portfolio website** built with **HTM
 
 ## Preview
 
-> Tip: add a screenshot/gif of your deployed site here.
-
-![Profile](./closeup.jpeg)
+![Website Preview](./Preview-website.png)
 
 ---
 
