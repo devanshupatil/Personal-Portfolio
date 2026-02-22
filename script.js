@@ -243,7 +243,7 @@ function initHamburgerMenu() {
  * Section Reveal Animation on Scroll
  */
 function initSectionReveal() {
-    const revealElements = document.querySelectorAll('.about, .skills, .projects, .achievements, .contact');
+    const revealElements = document.querySelectorAll('.about, .skills, .projects, .resume, .achievements, .contact');
     
     const revealOptions = {
         threshold: 0.1,
