@@ -48,6 +48,20 @@ I’m a passionate and versatile **Full Stack Developer** from **Buldhana, Mahar
 
 ## 🔭 Projects
 
+### ⏱️ TimeStream — Developer Activity Tracker (**04/2026**)
+Auto-tracks coding sessions, browser activity & AI tool usage into a local dashboard.
+
+- 🔗 Landing Page: **[https://timestream.netlify.app/]**
+- 🧰 Tech: **Electron, Node.js, SQLite, chokidar, Vanilla JS, Tailwind CSS**
+- 🌐 Built **Chrome + Firefox extensions** that silently log GitHub, YouTube, AI tools & research tabs
+- 🤖 Integrates with **Claude CLI** (JSONL file watcher) and **OpenCode** (SQLite reader) to import AI coding sessions
+- 📊 Features: Timeline, Analytics Dashboard, AI Learnings view, full-text Search
+- 🔒 **100% local** — no cloud, no accounts, no tracking
+- ⚙️ **CI/CD** via GitHub Actions — auto-validates, packages extensions & creates releases on version tags
+
+[![CI](https://github.com/devanshupatil/TimeStream/actions/workflows/ci.yml/badge.svg)](https://github.com/devanshupatil/TimeStream/actions/workflows/ci.yml)
+[![Release](https://github.com/devanshupatil/TimeStream/actions/workflows/release.yml/badge.svg)](https://github.com/devanshupatil/TimeStream/actions/workflows/release.yml)
+
 ### 📚 Online Learning Platform — Full Stack Web Application (**09/2025 – 12/2025**)
 Role-based dashboards + AI-powered assessment automation.
 
@@ -69,7 +83,7 @@ Lightweight web app to create and download marriage biodata as PDF.
 ### 🛒 SagarShop — E-commerce Web App with Admin Panel (**06/2025 – 07/2025**)
 Full-featured e-commerce platform with an admin dashboard.
 
-- 🔗 Live: **https://sagarshop.vercel.app**
+- 🔗 Live: **https://sagar-shop.netlify.app**
 - 🧰 Tech: **React, Node.js, Supabase (PostgreSQL), Tailwind CSS**
 - 🧾 Product / order / customer management via REST APIs
 - 🚀 Deployed on **Vercel** with responsive UI
@@ -85,6 +99,7 @@ Full-featured e-commerce platform with an admin dashboard.
   <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" alt="C" />
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 </p>
 
 ### Frameworks & Libraries
@@ -94,6 +109,8 @@ Full-featured e-commerce platform with an admin dashboard.
   <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
   <img src="https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="Redux" />
+  <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
 </p>
 
 ### Databases
@@ -113,6 +130,8 @@ Full-featured e-commerce platform with an admin dashboard.
   <img src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" alt="GCP" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
   <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="JWT" />
+  <img src="https://img.shields.io/badge/CI/CD-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI/CD" />
 </p>
 
 ---
