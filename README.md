@@ -25,6 +25,8 @@ Modern, responsive, and animated **personal portfolio website** built with **HTM
 - Smooth **in-page scrolling**
 - Mobile-friendly **hamburger menu**
 - Scroll-based **section reveal animations**
+- **Experience & Education** timeline section
+- Interactive **Skills grid**
 - Projects grid with hover overlays + external links
 - **Back-to-top** floating button
 - **Contact form** with validation + **EmailJS** client-side email sending
@@ -95,6 +97,7 @@ Edit **`index.html`** to customize:
 
 - Name, tagline, about text
 - Skills/technologies
+- Experience and Education timelines
 - Project cards (links, descriptions, thumbnails)
 - Social/contact links (LinkedIn, GitHub, email, phone, Instagram)
 
