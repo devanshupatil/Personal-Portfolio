@@ -190,7 +190,7 @@ I use LLMs to **speed up development**, **automate content extraction**, and bui
   <a href="https://github.com/devanshupatil">
     <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
   </a>
-  <a href="https://drive.google.com/file/d/1F79tZb20TFk0pEPNT-8CHCjz7AYZKgNq/view?usp=drive_link" target="_blank" rel="noreferrer">
+  <a href="https://drive.google.com/file/d/1DEFWln1Dg-Lc98RS_9LQPCYdnmUgKGlw/view?usp=drive_link" target="_blank" rel="noreferrer">
     <img src="https://img.shields.io/badge/%F0%9F%93%84_Resume-View_PDF-success?style=for-the-badge&logo=google-drive&logoColor=white" alt="Resume" />
   </a>
 </div>
