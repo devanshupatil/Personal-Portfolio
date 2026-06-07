@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Devanshu Patil | Full-Stack Developer &amp; Software Craftsman</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#303038",
+                        "on-surface-variant": "#c7c4d7",
+                        "surface-container-high": "#292932",
+                        "on-tertiary-fixed": "#301400",
+                        "on-primary": "#1000a9",
+                        "surface-tint": "#c0c1ff",
+                        "primary-container": "#8083ff",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-error-container": "#ffdad6",
+                        "surface-bright": "#393841",
+                        "surface-variant": "#34343d",
+                        "inverse-surface": "#e4e1ed",
+                        "on-surface": "#e4e1ed",
+                        "inverse-primary": "#494bd6",
+                        "secondary": "#5de6ff",
+                        "on-background": "#e4e1ed",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-tertiary": "#4f2500",
+                        "on-secondary-container": "#00515d",
+                        "on-error": "#690005",
+                        "on-secondary-fixed": "#001f25",
+                        "surface-container-low": "#1b1b23",
+                        "on-secondary": "#00363e",
+                        "outline": "#908fa0",
+                        "surface-dim": "#13131b",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "surface": "#13131b",
+                        "surface-container": "#1f1f27",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "secondary-container": "#00cbe6",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#452000",
+                        "tertiary": "#ffb783",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "background": "#13131b",
+                        "outline-variant": "#464554",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#34343d",
+                        "on-primary-container": "#0d0096",
+                        "on-primary-fixed": "#07006c",
+                        "secondary-fixed": "#a2eeff",
+                        "primary-fixed": "#e1e0ff",
+                        "primary": "#c0c1ff",
+                        "tertiary-container": "#d97721"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "sm": "12px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "tag-label": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "tag-label": ["12px", {"lineHeight": "1.0", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(34, 211, 238, 0.03) 0%, transparent 50%);
+            color: #e4e1ed;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: transparent;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.5);
+        }
+
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 4s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .glow-border {
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+        }
+
+        .noise-texture {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md antialiased">
+<div class="noise-texture fixed inset-0 z-[-1]"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full border-b border-white/10 z-50 bg-[#0a0a0a]/70 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+<nav class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-indigo-500 text-2xl" data-icon="terminal">terminal</span>
+<span class="font-['JetBrains_Mono'] font-bold text-xl tracking-tighter text-white">Devanshu Patil</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-400 font-['JetBrains_Mono'] text-sm hover:text-cyan-400 transition-all duration-300" href="#projects">Projects</a>
+<a class="text-slate-400 font-['JetBrains_Mono'] text-sm hover:text-cyan-400 transition-all duration-300" href="#skills">Skills</a>
+<a class="text-slate-400 font-['JetBrains_Mono'] text-sm hover:text-cyan-400 transition-all duration-300" href="#contact">Contact</a>
+<button class="shimmer-btn bg-primary text-on-primary px-6 py-2 rounded-lg font-tag-label uppercase tracking-widest active:scale-95 transition-transform">
+                    Download Resume
+                </button>
+</div>
+</nav>
+</header>
+<main class="pt-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-xl flex flex-col items-start gap-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-tag-label">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+</span>
+                OPEN TO WORK
+            </div>
+<h1 class="font-h1 text-h1 text-white max-w-4xl">I Build Digital Products with <span class="text-indigo-400">Precision &amp; Craft.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Full-Stack Developer &amp; Software Craftsman specializing in high-performance local-first applications and scalable web ecosystems.
+            </p>
+<div class="flex gap-lg mt-md items-center">
+<div class="flex gap-md">
+<a class="text-on-surface hover:text-indigo-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="code">code</span>
+</a>
+<a class="text-on-surface hover:text-indigo-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="share">share</span>
+</a>
+<a class="text-on-surface hover:text-indigo-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-3xl" data-icon="mail">mail</span>
+</a>
+</div>
+<div class="h-px w-24 bg-white/10 hidden md:block"></div>
+<span class="font-code-sm text-code-sm text-slate-500">SCROLL TO EXPLORE</span>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<div class="glass-card p-lg rounded-xl flex flex-col gap-xs">
+<span class="text-h2 font-h2 text-white">4+</span>
+<span class="font-tag-label text-slate-500 uppercase tracking-widest">Major Projects</span>
+</div>
+<div class="glass-card p-lg rounded-xl flex flex-col gap-xs">
+<span class="text-h2 font-h2 text-white">7+</span>
+<span class="font-tag-label text-slate-500 uppercase tracking-widest">Technologies</span>
+</div>
+<div class="glass-card p-lg rounded-xl flex flex-col gap-xs">
+<span class="text-h2 font-h2 text-white">100%</span>
+<span class="font-tag-label text-slate-500 uppercase tracking-widest">Local Privacy First</span>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="mb-xl" id="skills">
+<h2 class="font-h2 text-h2 text-white mb-lg">What I Bring to Your Team</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- AI -->
+<div class="glass-card p-lg rounded-xl">
+<span class="material-symbols-outlined text-indigo-400 mb-md text-3xl" data-icon="psychology">psychology</span>
+<h3 class="font-code-sm text-white mb-sm">Artificial Intelligence</h3>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-right from-cyan-400 to-indigo-500 w-[75%] shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+</div>
+<div class="mt-md flex flex-wrap gap-2">
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">OpenAI</span>
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">Vector DB</span>
+</div>
+</div>
+<!-- Frontend -->
+<div class="glass-card p-lg rounded-xl">
+<span class="material-symbols-outlined text-indigo-400 mb-md text-3xl" data-icon="web_window">window</span>
+<h3 class="font-code-sm text-white mb-sm">Frontend Engineering</h3>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-right from-cyan-400 to-indigo-500 w-[95%] shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+</div>
+<div class="mt-md flex flex-wrap gap-2">
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">React</span>
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">Tailwind</span>
+</div>
+</div>
+<!-- Backend -->
+<div class="glass-card p-lg rounded-xl">
+<span class="material-symbols-outlined text-indigo-400 mb-md text-3xl" data-icon="data_object">data_object</span>
+<h3 class="font-code-sm text-white mb-sm">Backend Development</h3>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-right from-cyan-400 to-indigo-500 w-[88%] shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+</div>
+<div class="mt-md flex flex-wrap gap-2">
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">Node.js</span>
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">Rust</span>
+</div>
+</div>
+<!-- Databases -->
+<div class="glass-card p-lg rounded-xl">
+<span class="material-symbols-outlined text-indigo-400 mb-md text-3xl" data-icon="database">database</span>
+<h3 class="font-code-sm text-white mb-sm">Database Architecture</h3>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-right from-cyan-400 to-indigo-500 w-[82%] shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+</div>
+<div class="mt-md flex flex-wrap gap-2">
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">PostgreSQL</span>
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">SQLite</span>
+</div>
+</div>
+<!-- DevOps -->
+<div class="glass-card p-lg rounded-xl">
+<span class="material-symbols-outlined text-indigo-400 mb-md text-3xl" data-icon="settings_ethernet">settings_ethernet</span>
+<h3 class="font-code-sm text-white mb-sm">DevOps &amp; Cloud</h3>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-right from-cyan-400 to-indigo-500 w-[70%] shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+</div>
+<div class="mt-md flex flex-wrap gap-2">
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">Docker</span>
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">AWS</span>
+</div>
+</div>
+<!-- Extensions -->
+<div class="glass-card p-lg rounded-xl">
+<span class="material-symbols-outlined text-indigo-400 mb-md text-3xl" data-icon="extension">extension</span>
+<h3 class="font-code-sm text-white mb-sm">Extensions &amp; Tools</h3>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-right from-cyan-400 to-indigo-500 w-[90%] shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+</div>
+<div class="mt-md flex flex-wrap gap-2">
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">Electron</span>
+<span class="bg-indigo-500/10 text-indigo-400 font-tag-label px-2 py-1 rounded">WASM</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="mb-xl" id="projects">
+<h2 class="font-h2 text-h2 text-white mb-lg">Things I've Actually Built</h2>
+<!-- Featured Project -->
+<div class="glass-card glow-border rounded-2xl overflow-hidden mb-lg flex flex-col md:flex-row border-indigo-500/30">
+<div class="md:w-1/2 h-[300px] md:h-auto overflow-hidden">
+<img alt="TimeStream App Dashboard" class="w-full h-full object-cover" data-alt="professional software dashboard UI on a dark screen with elegant charts and indigo accents showing project timeline data" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY6FxLy6tea0xBcb-EW7YI7iOl9ezfXSFzI96fFgXGR9bn_FgPvDUPKTxDI9c9VXzI-zDu-dToAZo5BsvW3fJ0bODJeeGBuC8aM_-R3iZvrrPKasvV4tIkFV4tHGgyMGVjCDbIuhWnh7fBXKaAePEwzAi2nERFmVCZz_Esk0417KX-mnQj0pq50Pd6j1Co3ENSLpR-tR1TFnEbFc07Tf5U8iuCHLaLhsmW90gZdv8O3sWqcw9Y3UkfNjDJg_XOe83bmza3OFK0T-M"/>
+</div>
+<div class="md:w-1/2 p-lg flex flex-col justify-center">
+<div class="flex items-center gap-4 mb-md">
+<span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-400 font-tag-label border border-indigo-500/40">FEATURED</span>
+<span class="font-code-sm text-slate-500">v1.2.0</span>
+</div>
+<h3 class="text-h2 font-h2 text-white mb-sm">TimeStream</h3>
+<p class="text-body-md text-on-surface-variant mb-md">
+                        A privacy-first desktop application designed for technical learners. Track deep work sessions, learning velocity, and project milestones with 100% local data persistence.
+                    </p>
+<div class="flex flex-wrap gap-sm mb-lg">
+<span class="text-cyan-400 font-code-sm"># Electron</span>
+<span class="text-cyan-400 font-code-sm"># Node.js</span>
+<span class="text-cyan-400 font-code-sm"># SQLite</span>
+</div>
+<button class="shimmer-btn bg-white text-black px-8 py-3 rounded-lg font-tag-label uppercase tracking-widest w-fit">
+                        Explore Case Study
+                    </button>
+</div>
+</div>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="glass-card rounded-xl overflow-hidden flex flex-col">
+<div class="h-48">
+<img alt="Learning Platform" class="w-full h-full object-cover" data-alt="minimalist online learning interface with clean typography and soft glassmorphism card modules" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZVrXMS_XU9OJu5p6tc7FXLn-qFw2nmJ2KntG2f7jtGaoI3rkriDqxVBIrpLsiM-XvWPNwHxEw-LPGPgv-7N7jTfSEYqYxmEGXzU8ifxhDg3U6h8-3CDrDwvmVfUs5hFbYlDysY0iDRaJekdLv40vZmXMJ03H-avLFncA21PXL4N58W_sUuN3K9gZvjOoaX3NeBDung41n8vINqRhZA5bJkBw3Za1kPqgjk3llRa_NwV8Zn8BuyT__7TpHqmropsSGnxvG7oPrNk0"/>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<h4 class="font-h2 text-2xl text-white mb-xs">Learning Platform</h4>
+<p class="text-on-surface-variant text-sm mb-md line-clamp-3">Full-stack LMS built with high emphasis on user engagement and progress tracking.</p>
+<div class="mt-auto flex gap-sm text-slate-500 font-code-sm">
+<span>React</span> • <span>FastAPI</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden flex flex-col">
+<div class="h-48">
+<img alt="SagarShop" class="w-full h-full object-cover" data-alt="modern ecommerce store UI on a mobile device showing luxury watches and high-end fashion with dark aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL5qYUIiA4e7O-A3ZJ7iQ0Bk2EGUL5teZOqcmesxLG_fhaFKsMgKYr6G9S468inxB4yO3OY8MXltBfaMN6P4qWnMCjBbH8NOJ8f-XBHi6RVmG3vFt4FE-DhiTz1X0gZ1S7go-u5qO4ZEgUG-5Ttjxln0ibekEi_E_OVloNuSgVJnlhTW0LipdYm8LsGolOnp0i4k2ZLDndTGAC4b9dVEmYdjsneDBX9VQ6biMcb36A1mdLfyQy4k4GOCkpexOuxNU1Fzq5R8opMMw"/>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<h4 class="font-h2 text-2xl text-white mb-xs">SagarShop</h4>
+<p class="text-on-surface-variant text-sm mb-md line-clamp-3">E-commerce engine optimized for conversion, featuring real-time inventory and instant checkout.</p>
+<div class="mt-auto flex gap-sm text-slate-500 font-code-sm">
+<span>Next.js</span> • <span>Stripe</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden flex flex-col">
+<div class="h-48">
+<img alt="Biodata Builder" class="w-full h-full object-cover" data-alt="clean digital resume and profile builder interface with elegant typography and structured data entry forms" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJqcDE59sCpH9RrhqH1DYPMRP3fm_WbcjXSGEzglqipe2PIX13NxyzwrYSDzYJajt0AQ8jQXjwcvrmYejrUDvgHcRAvObaPINeweW0AFJ_lur4jjdV5wJLRZGx4_E-6gl2KfSSmqCEz9m-BFnXg7WMzk4Trp01JBPkH5HelmrHQqWgU42RtOR0k3CSyzroeOH7CMEKPYISLB2GGS1WwUGiezPd8A4y7nm9qA-K3tekNK55JsgfqqFXiYZN61QMeWl2EZKJHme-jCI"/>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<h4 class="font-h2 text-2xl text-white mb-xs">Biodata Builder</h4>
+<p class="text-on-surface-variant text-sm mb-md line-clamp-3">Automated resume generator using structured data to create pixel-perfect professional profiles.</p>
+<div class="mt-auto flex gap-sm text-slate-500 font-code-sm">
+<span>Tailwind</span> • <span>PDF.js</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Resume Section -->
+<section class="mb-xl">
+<h2 class="font-h2 text-h2 text-white mb-lg text-center">Professional Journey</h2>
+<div class="max-w-3xl mx-auto space-y-md">
+<div class="relative pl-8 border-l border-white/10 py-4">
+<div class="absolute left-[-5px] top-7 h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_8px_#6366f1]"></div>
+<span class="font-code-sm text-indigo-400">2024 — PRESENT</span>
+<h3 class="text-h2 text-xl text-white mt-1">Full-Stack Engineer</h3>
+<p class="text-on-surface-variant mt-2">Freelance &amp; Open Source Contribution. Developing specialized tools for data privacy and developer productivity.</p>
+</div>
+<div class="relative pl-8 border-l border-white/10 py-4">
+<div class="absolute left-[-5px] top-7 h-2 w-2 rounded-full bg-slate-700"></div>
+<span class="font-code-sm text-slate-500">2023</span>
+<h3 class="text-h2 text-xl text-white mt-1">Software Intern</h3>
+<p class="text-on-surface-variant mt-2">Focused on frontend modernization and API architectural shifts for regional business platforms.</p>
+</div>
+<div class="relative pl-8 border-l border-white/10 py-4">
+<div class="absolute left-[-5px] top-7 h-2 w-2 rounded-full bg-slate-700"></div>
+<span class="font-code-sm text-slate-500">EDUCATION</span>
+<h3 class="text-h2 text-xl text-white mt-1">B.Tech in Computer Science</h3>
+<p class="text-on-surface-variant mt-2">Specializing in Artificial Intelligence and Distributed Systems.</p>
+</div>
+<div class="flex justify-center mt-lg pt-md">
+<button class="shimmer-btn bg-indigo-600 text-white px-10 py-4 rounded-xl font-tag-label uppercase tracking-widest flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                        Get Full CV
+                    </button>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="mb-xl" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<div>
+<h2 class="font-h1 text-h2 text-white mb-md leading-tight">Let's Build Something Together</h2>
+<p class="text-body-lg text-on-surface-variant mb-lg">Have a vision for a product? I'm currently available for full-time roles and high-impact contract work.</p>
+<div class="space-y-lg">
+<div class="flex items-center gap-md">
+<div class="h-12 w-12 rounded-lg bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
+<span class="material-symbols-outlined text-indigo-400" data-icon="mail">mail</span>
+</div>
+<div>
+<p class="text-slate-500 font-tag-label uppercase tracking-widest">Email</p>
+<p class="text-white font-code-sm">hello@devanshu.patil</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="h-12 w-12 rounded-lg bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
+<span class="material-symbols-outlined text-indigo-400" data-icon="call">call</span>
+</div>
+<div>
+<p class="text-slate-500 font-tag-label uppercase tracking-widest">Phone</p>
+<p class="text-white font-code-sm">+91 98765 43210</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="h-12 w-12 rounded-lg bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20">
+<span class="material-symbols-outlined text-indigo-400" data-icon="link">link</span>
+</div>
+<div>
+<p class="text-slate-500 font-tag-label uppercase tracking-widest">LinkedIn</p>
+<p class="text-white font-code-sm">linkedin.com/in/devanshupatil</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-lg rounded-2xl">
+<form class="space-y-md">
+<div class="space-y-xs">
+<label class="font-code-sm text-slate-500 text-xs">NAME</label>
+<input class="w-full bg-white/5 border-b border-white/10 focus:border-indigo-400 focus:ring-0 text-white font-code-sm p-3 placeholder:text-slate-700" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-code-sm text-slate-500 text-xs">EMAIL ADDRESS</label>
+<input class="w-full bg-white/5 border-b border-white/10 focus:border-indigo-400 focus:ring-0 text-white font-code-sm p-3 placeholder:text-slate-700" placeholder="john@company.com" type="email"/>
+</div>
+<div class="space-y-xs">
+<label class="font-code-sm text-slate-500 text-xs">PROJECT DETAILS</label>
+<textarea class="w-full bg-white/5 border-b border-white/10 focus:border-indigo-400 focus:ring-0 text-white font-code-sm p-3 placeholder:text-slate-700 resize-none" placeholder="Tell me about your vision..." rows="4"></textarea>
+</div>
+<button class="shimmer-btn w-full bg-indigo-600 text-white py-4 rounded-xl font-tag-label uppercase tracking-widest mt-md">
+                            Send Message
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0a0a0a] border-t border-white/5 py-12">
+<div class="flex flex-col items-center justify-center text-center w-full px-6">
+<div class="font-bold text-lg text-white mb-2">DP •</div>
+<p class="text-on-surface-variant font-code-sm mb-lg">Designing solutions that matter.</p>
+<div class="flex gap-lg mb-lg">
+<a class="text-slate-600 font-['JetBrains_Mono'] text-xs uppercase tracking-widest hover:text-indigo-400 transition-colors duration-200" href="#">GitHub</a>
+<a class="text-slate-600 font-['JetBrains_Mono'] text-xs uppercase tracking-widest hover:text-indigo-400 transition-colors duration-200" href="#">LinkedIn</a>
+<a class="text-slate-600 font-['JetBrains_Mono'] text-xs uppercase tracking-widest hover:text-indigo-400 transition-colors duration-200" href="#">Twitter</a>
+<a class="text-slate-600 font-['JetBrains_Mono'] text-xs uppercase tracking-widest hover:text-indigo-400 transition-colors duration-200" href="#">Source</a>
+</div>
+<p class="text-slate-600 font-['JetBrains_Mono'] text-xs uppercase tracking-widest">
+                © 2024 Devanshu Patil. Built with precision.
+            </p>
+</div>
+</footer>
+</body></html>
