@@ -16,9 +16,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         /* ─── Reset & Base ─── */
         *,
@@ -267,13 +265,10 @@
         }
 
         @keyframes pulse-dot {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
                 opacity: 1;
             }
-
             50% {
                 transform: scale(1.4);
                 opacity: .7;
@@ -299,24 +294,16 @@
         }
 
         .nav-cta {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, var(--indigo), #818cf8);
-            color: #fff;
             padding: 8px 18px;
             border-radius: 8px;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             border: none;
-            box-shadow: 0 4px 16px rgba(99, 102, 241, .3);
             transition: all .25s;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 24px rgba(99, 102, 241, .4);
         }
 
         /* ─── HERO ─── */
@@ -376,7 +363,6 @@
                 transform: scale(1);
                 opacity: .4;
             }
-
             100% {
                 transform: scale(2);
                 opacity: 0;
@@ -410,19 +396,7 @@
         }
 
         .hero-typing .cursor {
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
+            color: var(--cyan);
         }
 
         .hero-desc {
@@ -533,31 +507,28 @@
             animation: float 4s ease-in-out infinite;
         }
 
-        .float-badge:nth-child(2) {
+        .float-badge:nth-child(3) {
             top: 20px;
             right: -20px;
             animation-delay: 0s;
         }
 
-        .float-badge:nth-child(3) {
+        .float-badge:nth-child(4) {
             bottom: 40px;
             left: -30px;
             animation-delay: 1.5s;
         }
 
-        .float-badge:nth-child(4) {
+        .float-badge:nth-child(5) {
             top: 45%;
             left: -40px;
             animation-delay: .8s;
         }
 
         @keyframes float {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0);
             }
-
             50% {
                 transform: translateY(-8px);
             }
@@ -1209,7 +1180,6 @@
         }
 
         @media(max-width:600px) {
-
             .skills-grid,
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -1242,10 +1212,10 @@
                 <a href="#resume">Experience</a>
                 <a href="#contact">Contact</a>
                 <a href="https://blogbydevanshu.netlify.app/" target="_blank">
-                    <button class="nav-cta" style="background:linear-gradient(135deg,#22d3ee,#6366f1);box-shadow:0 4px 16px rgba(34,211,238,.25);">✍️ Blog</button>
+                    <button class="nav-cta" style="background:linear-gradient(135deg,#22d3ee,#6366f1);color:#fff;font-weight:600;">✍️ Blog</button>
                 </a>
                 <a href="Devanshu%20Patil.pdf" target="_blank">
-                    <button class="nav-cta">💼 Download Resume</button>
+                    <button class="nav-cta" style="background:linear-gradient(135deg,var(--indigo),#818cf8);color:#fff;box-shadow:0 4px 16px rgba(99,102,241,.3);font-weight:600;">💼 Download Resume</button>
                 </a>
             </nav>
         </div>
@@ -1335,8 +1305,7 @@
                     <p class="reveal">I'm actively looking for <strong>full-time engineering roles</strong> where I can
                         ship fast, learn deeply, and grow with a team.</p>
                     <div class="availability-pill reveal">
-                        <span class="pulse"
-                            style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+                        <span class="pulse" style="width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;"></span>
                         ✅ Available for Full-Time Roles — Starting Immediately
                     </div>
                 </div>
@@ -1372,8 +1341,7 @@
         <div class="container">
             <div class="section-label reveal">What I Bring</div>
             <h2 class="section-title reveal">Skills for Your Team</h2>
-            <p class="section-sub reveal" style="margin-bottom:48px">Across the full stack — from database to dashboard,
-                frontend to DevOps.</p>
+            <p class="section-sub reveal" style="margin-bottom:48px">Across the full stack — from database to dashboard, frontend to DevOps.</p>
             <div class="skills-grid">
 
                 <div class="glass skill-card reveal">
@@ -1383,8 +1351,7 @@
                         <div class="skill-bar" style="width:0%" data-width="82%"></div>
                     </div>
                     <div class="skill-tags">
-                        <span class="tag">Claude AI</span><span class="tag">ChatGPT</span><span
-                            class="tag">Gemini</span><span class="tag">Perplexity</span>
+                        <span class="tag">Claude AI</span><span class="tag">ChatGPT</span><span class="tag">Gemini</span><span class="tag">Perplexity</span>
                     </div>
                 </div>
 
@@ -1417,8 +1384,7 @@
                         <div class="skill-bar" style="width:0%" data-width="84%"></div>
                     </div>
                     <div class="skill-tags">
-                        <span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span
-                            class="tag">SQLite</span><span class="tag">Supabase</span>
+                        <span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">SQLite</span><span class="tag">Supabase</span>
                     </div>
                 </div>
 
@@ -1440,8 +1406,7 @@
                         <div class="skill-bar" style="width:0%" data-width="88%"></div>
                     </div>
                     <div class="skill-tags">
-                        <span class="tag">Electron</span><span class="tag cyan">Chrome Ext</span><span
-                            class="tag cyan">Firefox Ext</span>
+                        <span class="tag">Electron</span><span class="tag cyan">Chrome Ext</span><span class="tag cyan">Firefox Ext</span>
                     </div>
                 </div>
 
@@ -1454,8 +1419,7 @@
         <div class="container">
             <div class="section-label reveal">Portfolio</div>
             <h2 class="section-title reveal">Things I've Actually Built</h2>
-            <p class="section-sub reveal" style="margin-bottom:48px">Real projects, real impact — not just tutorial
-                clones.</p>
+            <p class="section-sub reveal" style="margin-bottom:48px">Real projects, real impact — not just tutorial clones.</p>
 
             <!-- Featured: TimeStream -->
             <div class="featured-card reveal">
@@ -1465,12 +1429,9 @@
                 <div class="featured-body">
                     <div class="featured-badge">⭐ FEATURED PROJECT</div>
                     <h3 class="featured-title">⏱️ TimeStream</h3>
-                    <p class="featured-desc">An open-source desktop app that silently tracks everything you learn and
-                        build — GitHub visits, YouTube tutorials, AI sessions — and turns it into a beautiful daily
-                        insights dashboard. 100% local, zero cloud, zero tracking.</p>
+                    <p class="featured-desc">An open-source desktop app that silently tracks everything you learn and build — GitHub visits, YouTube tutorials, AI sessions — and turns it into a beautiful daily insights dashboard. 100% local, zero cloud, zero tracking.</p>
                     <div class="featured-tags">
-                        <span>Electron</span><span>Node.js</span><span>SQLite</span><span>Chrome
-                            Extension</span><span>Vanilla JS</span><span>GitHub Actions</span>
+                        <span>Electron</span><span>Node.js</span><span>SQLite</span><span>Chrome Extension</span><span>Vanilla JS</span><span>GitHub Actions</span>
                     </div>
                     <div style="display:flex;gap:10px;margin-bottom:20px">
                         <div style="font-size:13px;color:var(--muted)">🔒 Privacy-first</div>
@@ -1480,8 +1441,7 @@
                         <div style="font-size:13px;color:var(--muted)">🌐 Browser extension</div>
                     </div>
                     <div class="project-btns">
-                        <a href="https://timestream.netlify.app/" target="_blank" class="proj-btn primary">🚀 Live
-                            Demo</a>
+                        <a href="https://timestream.netlify.app/" target="_blank" class="proj-btn primary">🚀 Live Demo</a>
                     </div>
                 </div>
             </div>
@@ -1496,15 +1456,12 @@
                     <div class="proj-body">
                         <div class="proj-icon">🎓</div>
                         <h4 class="proj-title">Online Learning Platform</h4>
-                        <p class="proj-desc">Role-based dashboards, JWT authentication, course management, attendance
-                            tracking, and LLM-powered question extraction.</p>
+                        <p class="proj-desc">Role-based dashboards, JWT authentication, course management, attendance tracking, and LLM-powered question extraction.</p>
                         <div class="proj-footer" style="flex-direction:column; align-items:flex-start; gap:12px;">
                             <div class="proj-techs">React · Node.js · PostgreSQL · Docker · GCP</div>
                             <div style="display:flex;gap:8px;">
-                                <a href="https://github.com/devanshupatil/Online-Learning-Portal" target="_blank"
-                                    class="proj-btn outline" style="padding:6px 14px;font-size:12px;">📂 GitHub</a>
-                                <a href="https://online-learning-portal-ten.vercel.app/" target="_blank"
-                                    class="proj-btn primary" style="padding:6px 14px;font-size:12px;">🚀 Live Demo</a>
+                                <a href="https://github.com/devanshupatil/Online-Learning-Portal" target="_blank" class="proj-btn outline" style="padding:6px 14px;font-size:12px;">📂 GitHub</a>
+                                <a href="https://online-learning-portal-ten.vercel.app/" target="_blank" class="proj-btn primary" style="padding:6px 14px;font-size:12px;">🚀 Live Demo</a>
                             </div>
                         </div>
                     </div>
@@ -1517,15 +1474,12 @@
                     <div class="proj-body">
                         <div class="proj-icon">🛒</div>
                         <h4 class="proj-title">SagarShop E-commerce</h4>
-                        <p class="proj-desc">Full e-commerce platform with admin panel, product & order management, REST
-                            APIs, and Supabase database integration.</p>
+                        <p class="proj-desc">Full e-commerce platform with admin panel, product & order management, REST APIs, and Supabase database integration.</p>
                         <div class="proj-footer" style="flex-direction:column; align-items:flex-start; gap:12px;">
                             <div class="proj-techs">React · Node.js · Supabase</div>
                             <div style="display:flex;gap:8px;">
-                                <a href="https://github.com/devanshupatil/Sagar-Shop" target="_blank"
-                                    class="proj-btn outline" style="padding:6px 14px;font-size:12px;">📂 GitHub</a>
-                                <a href="https://sagar-shop.netlify.app/" target="_blank" class="proj-btn primary"
-                                    style="padding:6px 14px;font-size:12px;">🚀 Live Demo</a>
+                                <a href="https://github.com/devanshupatil/Sagar-Shop" target="_blank" class="proj-btn outline" style="padding:6px 14px;font-size:12px;">📂 GitHub</a>
+                                <a href="https://sagar-shop.netlify.app/" target="_blank" class="proj-btn primary" style="padding:6px 14px;font-size:12px;">🚀 Live Demo</a>
                             </div>
                         </div>
                     </div>
@@ -1538,15 +1492,12 @@
                     <div class="proj-body">
                         <div class="proj-icon">📝</div>
                         <h4 class="proj-title">Marriage Biodata Builder</h4>
-                        <p class="proj-desc">Intuitive biodata builder with dynamic forms, live preview, and one-click
-                            PDF generation for professional marriage profiles.</p>
+                        <p class="proj-desc">Intuitive biodata builder with dynamic forms, live preview, and one-click PDF generation for professional marriage profiles.</p>
                         <div class="proj-footer" style="flex-direction:column; align-items:flex-start; gap:12px;">
                             <div class="proj-techs">HTML · CSS · JavaScript · jsPDF</div>
                             <div style="display:flex;gap:8px;">
-                                <a href="https://github.com/devanshupatil/marriage-biodata-builder" target="_blank"
-                                    class="proj-btn outline" style="padding:6px 14px;font-size:12px;">📂 GitHub</a>
-                                <a href="https://marriage-biodata-builder.vercel.app/" target="_blank"
-                                    class="proj-btn primary" style="padding:6px 14px;font-size:12px;">🚀 Live Demo</a>
+                                <a href="https://github.com/devanshupatil/marriage-biodata-builder" target="_blank" class="proj-btn outline" style="padding:6px 14px;font-size:12px;">📂 GitHub</a>
+                                <a href="https://marriage-biodata-builder.vercel.app/" target="_blank" class="proj-btn primary" style="padding:6px 14px;font-size:12px;">🚀 Live Demo</a>
                             </div>
                         </div>
                     </div>
@@ -1584,30 +1535,22 @@
                         <div class="tl-item reveal">
                             <div class="tl-year">FEB 2026 — MAR 2026</div>
                             <div class="tl-title">Frontend Developer Intern — Search Point</div>
-                            <div class="tl-desc">Built responsive UIs, improved user experience, and integrated APIs
-                                into the platform during a verified 38-day internship. Delivered <strong
-                                    style="color:var(--text)">3 feature-complete UI modules</strong>, reducing
-                                time-to-ship on key product pages. Issued a Verified Achievement Record on completion.
-                            </div>
+                            <div class="tl-desc">Built responsive UIs, improved user experience, and integrated APIs into the platform during a verified 38-day internship. Delivered <strong style="color:var(--text)">3 feature-complete UI modules</strong>, reducing time-to-ship on key product pages. Issued a Verified Achievement Record on completion.</div>
                         </div>
                         <div class="tl-item reveal">
                             <div class="tl-year">2024 — PRESENT</div>
                             <div class="tl-title">Full-Stack Engineer</div>
-                            <div class="tl-desc">Freelance & Open Source. Building developer tools, privacy-first
-                                desktop apps, and scalable web platforms. Creator of TimeStream v1.2.0.</div>
+                            <div class="tl-desc">Freelance & Open Source. Building developer tools, privacy-first desktop apps, and scalable web platforms. Creator of TimeStream v1.2.0.</div>
                         </div>
                         <div class="tl-item reveal">
                             <div class="tl-year">2023</div>
                             <div class="tl-title">Hacktoberfest Contributor</div>
-                            <div class="tl-desc">Contributed to multiple open-source projects during Hacktoberfest 2023
-                                — a global celebration of open-source development.</div>
+                            <div class="tl-desc">Contributed to multiple open-source projects during Hacktoberfest 2023 — a global celebration of open-source development.</div>
                         </div>
                         <div class="tl-item reveal">
                             <div class="tl-year">03/2023 — 06/2026</div>
                             <div class="tl-title">Bachelor of Science</div>
-                            <div class="tl-desc">Sant Gadge Baba Amravati University · Buldhana, Maharashtra, India.
-                                Focused on programming languages, web technologies, and software engineering
-                                fundamentals.</div>
+                            <div class="tl-desc">Sant Gadge Baba Amravati University · Buldhana, Maharashtra, India. Focused on programming languages, web technologies, and software engineering fundamentals.</div>
                         </div>
                         <div class="tl-item reveal">
                             <div class="tl-year">03/2022 — 03/2023</div>
@@ -1620,15 +1563,11 @@
                     <div class="glass" style="padding:36px;text-align:center">
                         <div style="font-size:48px;margin-bottom:16px">📄</div>
                         <h3 style="font-size:22px;font-weight:700;margin-bottom:10px">View My Resume</h3>
-                        <p style="color:var(--muted);font-size:14px;margin-bottom:28px">Full work history, education,
-                            tech stack, and projects — one click away.</p>
+                        <p style="color:var(--muted);font-size:14px;margin-bottom:28px">Full work history, education, tech stack, and projects — one click away.</p>
                         <div style="display:flex;flex-direction:column;gap:12px">
-                            <a href="Devanshu%20Patil.pdf" target="_blank" class="btn btn-primary"
-                                style="justify-content:center">👁️ View PDF</a>
-                            <a href="Devanshu%20Patil.pdf" download class="btn btn-outline"
-                                style="justify-content:center">⬇️ Download</a>
-                            <a href="https://drive.google.com/file/d/1mt36DTbkU6M5CM_AhoZmO1ZtveD_Ini7/view?usp=sharing"
-                                target="_blank" class="btn btn-ghost" style="justify-content:center">🔗 Google Drive</a>
+                            <a href="Devanshu%20Patil.pdf" target="_blank" class="btn btn-primary" style="justify-content:center">👁️ View PDF</a>
+                            <a href="Devanshu%20Patil.pdf" download class="btn btn-outline" style="justify-content:center">⬇️ Download</a>
+                            <a href="https://drive.google.com/file/d/1mt36DTbkU6M5CM_AhoZmO1ZtveD_Ini7/view?usp=sharing" target="_blank" class="btn btn-ghost" style="justify-content:center">🔗 Google Drive</a>
                         </div>
                     </div>
                 </div>
@@ -1643,8 +1582,7 @@
                 <div>
                     <div class="section-label reveal">Get In Touch</div>
                     <h2 class="contact-headline reveal">Let's Build Something Together.</h2>
-                    <p class="contact-sub reveal">I'm actively looking for full-time opportunities. Have a role or
-                        project in mind? I respond within 24 hours.</p>
+                    <p class="contact-sub reveal">I'm actively looking for full-time opportunities. Have a role or project in mind? I respond within 24 hours.</p>
                     <div class="contact-links">
                         <a href="mailto:devanshupatil692@gmail.com" class="contact-link reveal">
                             <div class="contact-link-icon">📧</div>
@@ -1653,8 +1591,7 @@
                                 <div class="contact-link-val">devanshupatil692@gmail.com</div>
                             </div>
                         </a>
-                        <a href="https://www.linkedin.com/in/devanshu-patil-973334266" target="_blank"
-                            class="contact-link reveal">
+                        <a href="https://www.linkedin.com/in/devanshu-patil-973334266" target="_blank" class="contact-link reveal">
                             <div class="contact-link-icon">💼</div>
                             <div>
                                 <div class="contact-link-text">LinkedIn</div>
@@ -1679,8 +1616,7 @@
                 </div>
                 <div class="glass form-card reveal">
                     <h3 style="font-size:20px;font-weight:700;margin-bottom:6px">Send a Message</h3>
-                    <p style="font-size:13px;color:var(--muted);margin-bottom:28px">I'll get back to you within 24
-                        hours.</p>
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:28px">I'll get back to you within 24 hours.</p>
                     <form id="contact-form">
                         <div class="form-group">
                             <label class="form-label">Your Name</label>
@@ -1688,13 +1624,11 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Email Address</label>
-                            <input type="email" name="reply_to" class="form-input" placeholder="john@company.com"
-                                required />
+                            <input type="email" name="reply_to" class="form-input" placeholder="john@company.com" required />
                         </div>
                         <div class="form-group">
                             <label class="form-label">Message</label>
-                            <textarea name="message" class="form-input"
-                                placeholder="Tell me about the role or project..." rows="5" required></textarea>
+                            <textarea name="message" class="form-input" placeholder="Tell me about the role or project..." rows="5" required></textarea>
                         </div>
                         <button type="submit" class="submit-btn">Send Message 📨</button>
                     </form>
