@@ -607,7 +607,7 @@
         }
 
         .about-photo {
-            width: 60%;
+            width: 100%;
             margin: 0 auto;
             border-radius: 10px;
             overflow: hidden;
@@ -623,7 +623,7 @@
         }
 
         .about-actions {
-            width: 60%;
+            width: 90%;
             margin: 14px auto 0;
             display: flex;
             gap: 10px;
@@ -645,8 +645,15 @@
             transition: all .2s;
         }
 
-        .resume-btn:hover { border-color: var(--indigo); color: var(--indigo); }
-        .resume-btn svg { width: 14px; height: 14px; }
+        .resume-btn:hover {
+            border-color: var(--indigo);
+            color: var(--indigo);
+        }
+
+        .resume-btn svg {
+            width: 14px;
+            height: 14px;
+        }
 
         .download-btn {
             flex-shrink: 0;
@@ -661,11 +668,18 @@
             transition: all .2s;
         }
 
-        .download-btn:hover { background: rgba(16, 185, 129, .1); border-color: var(--green); }
-        .download-btn svg { width: 16px; height: 16px; }
+        .download-btn:hover {
+            background: rgba(16, 185, 129, .1);
+            border-color: var(--green);
+        }
+
+        .download-btn svg {
+            width: 16px;
+            height: 16px;
+        }
 
         .about-email {
-            width: 60%;
+            width: 90%;
             margin: 14px auto 0;
             display: flex;
             align-items: center;
@@ -675,8 +689,15 @@
             transition: color .2s;
         }
 
-        .about-email:hover { color: var(--indigo); }
-        .about-email svg { width: 15px; height: 15px; flex-shrink: 0; }
+        .about-email:hover {
+            color: var(--indigo);
+        }
+
+        .about-email svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
 
         .terminal-card {
             background: #0d0d14;
@@ -1391,16 +1412,29 @@
                         <img src="closeup.jpeg" alt="Devanshu Patil" />
                     </div>
                     <div class="about-actions">
-                        <a href="https://drive.google.com/file/d/1lFiz-5GhMTeGKBNapzvT90IqIFbmw8Pw/view?usp=drive_link" target="_blank" class="resume-btn">
+                        <a href="https://drive.google.com/file/d/1lFiz-5GhMTeGKBNapzvT90IqIFbmw8Pw/view?usp=drive_link"
+                            target="_blank" class="resume-btn">
                             View Résumé
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                <polyline points="15 3 21 3 21 9" />
+                                <line x1="10" y1="14" x2="21" y2="3" />
+                            </svg>
                         </a>
-                        <a href="https://drive.google.com/uc?export=download&id=1lFiz-5GhMTeGKBNapzvT90IqIFbmw8Pw" class="download-btn" aria-label="Download Résumé">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <a href="https://drive.google.com/uc?export=download&id=1lFiz-5GhMTeGKBNapzvT90IqIFbmw8Pw"
+                            class="download-btn" aria-label="Download Résumé">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
                         </a>
                     </div>
                     <a href="mailto:devanshupatil692@gmail.com" class="about-email">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <polyline points="22 6 12 13 2 6" />
+                        </svg>
                         devanshupatil692@gmail.com
                     </a>
                 </div>
