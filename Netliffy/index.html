@@ -25,7 +25,14 @@
     <meta property="og:url" content="https://devanshupatil.netlify.app/" />
     <meta property="og:image" content="https://devanshupatil.netlify.app/closeup.jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script>document.documentElement.classList.add('js');</script>
+    <script>
+        document.documentElement.classList.add('js');
+        (function () {
+            var t = localStorage.getItem('theme');
+            if (t !== 'light') t = 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
     <title>Devanshu Patil | Full Stack Developer</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
@@ -57,6 +64,54 @@
             --muted: #94a3b8;
             --faint: #334155;
             --radius: 14px;
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface2: #eef2f7;
+            --border: rgba(15, 23, 42, .12);
+            --indigo: #4f46e5;
+            --cyan: #0891b2;
+            --green: #059669;
+            --text: #0f172a;
+            --muted: #475569;
+            --faint: #94a3b8;
+        }
+
+        [data-theme="light"] .glass {
+            background: rgba(255, 255, 255, .75);
+            box-shadow: 0 1px 3px rgba(15, 23, 42, .06);
+        }
+
+        [data-theme="light"] .navbar {
+            background: rgba(255, 255, 255, .85);
+        }
+
+        [data-theme="light"] .terminal-card {
+            background: #ffffff;
+        }
+
+        [data-theme="light"] .hero-chip,
+        [data-theme="light"] .btn-ghost {
+            background: rgba(15, 23, 42, .05);
+        }
+
+        [data-theme="light"] .btn-ghost:hover {
+            background: rgba(15, 23, 42, .1);
+        }
+
+        [data-theme="light"] .skill-bar-bg {
+            background: rgba(15, 23, 42, .1);
+        }
+
+        [data-theme="light"] .contact-link {
+            background: rgba(15, 23, 42, .03);
+        }
+
+        [data-theme="light"] .form-input {
+            background: #ffffff;
+            color: var(--text);
         }
 
         html {
@@ -384,6 +439,37 @@
 
         .nav-toggle.active span:nth-child(3) {
             transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+            border-radius: 50%;
+            color: var(--text);
+            transition: background .25s, transform .25s;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, .1);
+            transform: scale(1.1);
+        }
+
+        [data-theme="light"] .theme-toggle:hover {
+            background: rgba(15, 23, 42, .1);
         }
 
         /* ─── HERO ─── */
@@ -903,7 +989,7 @@
         .proj-techs {
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            color: #f1f5f9;
+            color: var(--text);
         }
 
         /* ─── TIMELINE ─── */
@@ -1329,12 +1415,13 @@
                 <a href="https://blogbydevanshu.netlify.app/" target="_blank" rel="noopener" class="nav-cta"
                     style="background:linear-gradient(135deg,#22d3ee,#6366f1);box-shadow:0 4px 16px rgba(34,211,238,.25);">✍️
                     Blog</a>
-                <a href="https://drive.google.com/file/d/1lFiz-5GhMTeGKBNapzvT90IqIFbmw8Pw/view?usp=drive_link"
-                    target="_blank" rel="noopener" class="nav-cta">💼 Download Resume</a>
             </nav>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">🌙</button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -1808,6 +1895,24 @@
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
+        // ── Theme Toggle ──
+        (function () {
+            const btn = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+            if (!btn) return;
+            function apply(theme) {
+                root.setAttribute('data-theme', theme);
+                btn.textContent = theme === 'light' ? '☀️' : '🌙';
+                btn.setAttribute('aria-pressed', theme === 'light');
+            }
+            apply(root.getAttribute('data-theme') || 'dark');
+            btn.addEventListener('click', () => {
+                const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                apply(next);
+                localStorage.setItem('theme', next);
+            });
+        })();
+
         // ── Mobile Nav Toggle ──
         (function () {
             const toggle = document.getElementById('nav-toggle');
