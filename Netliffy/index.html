@@ -114,6 +114,15 @@
             color: var(--text);
         }
 
+        html.theme-transition,
+        html.theme-transition body,
+        html.theme-transition *,
+        html.theme-transition *::before,
+        html.theme-transition *::after {
+            transition: background-color .5s ease, color .5s ease, border-color .5s ease !important;
+            transition-delay: 0s !important;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -470,6 +479,26 @@
 
         [data-theme="light"] .theme-toggle:hover {
             background: rgba(15, 23, 42, .1);
+        }
+
+        @keyframes theme-spin {
+            0% {
+                transform: rotate(0deg) scale(.4);
+                opacity: 0;
+            }
+
+            60% {
+                transform: rotate(200deg) scale(1.15);
+                opacity: 1;
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .theme-toggle.animate {
+            animation: theme-spin .5s ease;
         }
 
         /* ─── HERO ─── */
@@ -1412,9 +1441,7 @@
                 <a href="#projects">Projects</a>
                 <a href="#resume">Experience</a>
                 <a href="#contact">Contact</a>
-                <a href="https://blogbydevanshu.netlify.app/" target="_blank" rel="noopener" class="nav-cta"
-                    style="background:linear-gradient(135deg,#22d3ee,#6366f1);box-shadow:0 4px 16px rgba(34,211,238,.25);">✍️
-                    Blog</a>
+                <a href="https://blogbydevanshu.netlify.app/" target="_blank" rel="noopener">Blog</a>
             </nav>
             <div class="nav-actions">
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" aria-pressed="false">🌙</button>
@@ -1904,12 +1931,17 @@
                 root.setAttribute('data-theme', theme);
                 btn.textContent = theme === 'light' ? '☀️' : '🌙';
                 btn.setAttribute('aria-pressed', theme === 'light');
+                btn.classList.remove('animate');
+                void btn.offsetWidth;
+                btn.classList.add('animate');
             }
             apply(root.getAttribute('data-theme') || 'dark');
             btn.addEventListener('click', () => {
                 const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                root.classList.add('theme-transition');
                 apply(next);
                 localStorage.setItem('theme', next);
+                setTimeout(() => root.classList.remove('theme-transition'), 500);
             });
         })();
 
