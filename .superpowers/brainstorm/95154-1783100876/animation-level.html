@@ -1,0 +1,60 @@
+<h2>Animation intensity for the Terminal theme?</h2>
+<p class="subtitle">How much motion do you want throughout the portfolio?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#000;padding:20px;border-radius:8px;min-height:140px;border:1px solid #1a1a1a;font-family:monospace;">
+        <div style="color:#00ff88;font-size:10px;margin-bottom:8px;">$ loading portfolio...</div>
+        <div style="color:#fff;font-size:16px;font-weight:900;">DEVANSHU PATIL<span style="color:#00ff88">.</span></div>
+        <div style="color:#555;font-size:10px;margin-top:8px;">Full Stack Developer</div>
+        <div style="margin-top:12px;color:#333;font-size:9px;">— clean, instant, no delays —</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Subtle</h3>
+      <p>Fade-in reveals on scroll only. Fast, professional, zero jank. Best for recruiters who want info fast.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)" style="border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent);">
+    <div class="card-image">
+      <div style="background:#000;padding:20px;border-radius:8px;min-height:140px;border:1px solid #1a1a1a;font-family:monospace;position:relative;">
+        <div style="color:#00ff88;font-size:10px;margin-bottom:6px;">$ whoami</div>
+        <div style="color:#555;font-size:10px;margin-bottom:10px;">→ devanshu_patil — full stack dev</div>
+        <div style="color:#fff;font-size:16px;font-weight:900;letter-spacing:-.03em;">DEVANSHU<span style="color:#00ff88"> PATIL</span><span style="animation:blink 1s step-end infinite;color:#00ff88">█</span></div>
+        <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;">
+          <span style="color:#00ff88;font-size:9px;border:1px solid #00ff8844;padding:2px 6px;border-radius:3px;">React.js</span>
+          <span style="color:#00ff88;font-size:9px;border:1px solid #00ff8844;padding:2px 6px;border-radius:3px;">Node.js</span>
+        </div>
+        <div style="position:absolute;top:8px;right:8px;width:6px;height:6px;border-radius:50%;background:#00ff88;box-shadow:0 0 6px #00ff88;"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Medium ✓ (Selected)</h3>
+      <p>Typing cursor on name, terminal boot sequence on load, smooth scroll reveals with stagger, skill bars animate in. Immersive but not distracting.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#000;padding:20px;border-radius:8px;min-height:140px;border:1px solid #1a1a1a;font-family:monospace;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;opacity:.07;font-size:8px;color:#00ff88;line-height:1.2;overflow:hidden;word-break:break-all;">10110010101001011001010100101100101010010110010101001011001010100101100101010010110010101001</div>
+        <div style="position:relative;">
+          <div style="color:#00ff88;font-size:9px;margin-bottom:4px;opacity:.7;">INITIALIZING SYSTEM...</div>
+          <div style="color:#fff;font-size:16px;font-weight:900;text-shadow:0 0 10px rgba(0,255,136,.5);">DE<span style="color:#00ff88">V</span>AN<span style="color:#ff0040">S</span>HU</div>
+          <div style="color:#ff0040;font-size:9px;margin-top:4px;">GLITCH_MODE: ACTIVE</div>
+          <div style="margin-top:8px;color:#00ff88;font-size:8px;opacity:.6;">◈ matrix rain ◈ glitch text ◈ particle bg</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Heavy</h3>
+      <p>Matrix rain background, glitch text effects on name, particle cursor, RGB split on hover. Maximum impact — but risks slowing the page and distracting recruiters.</p>
+    </div>
+  </div>
+
+</div>
+<style>@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}</style>
+<p class="subtitle" style="margin-top:16px;">You said B — confirming Medium animations. Let me know if you want to change this.</p>

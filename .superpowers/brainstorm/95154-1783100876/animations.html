@@ -1,0 +1,118 @@
+<h2>Which live animations do you want to add?</h2>
+<p class="subtitle">All built for the Terminal Hacker theme. Select as many as you want.</p>
+
+<div class="options" data-multiselect>
+
+  <div class="option" data-choice="matrix" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Matrix Rain — Hero Background</h3>
+      <p>Falling green binary/katakana characters on a canvas behind the hero section. The most iconic terminal effect. Fades so your text stays readable.</p>
+      <div style="background:#000;border:1px solid #00ff8833;border-radius:4px;padding:10px;margin-top:8px;font-family:monospace;font-size:11px;height:60px;overflow:hidden;position:relative;">
+        <div style="color:#00ff88;opacity:.7;line-height:1.4;">
+          1 0 1 1 0 0 1 0 1 0 1 1 0 1 0 0 1 0<br/>
+          0 1 0 0 1 1 0 1 0 1 0 0 1 0 1 1 0 1<br/>
+          1 0 1 0 0 1 0 0 1 1 0 1 0 0 1 0 1 0
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,#000);"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="glitch" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Glitch Effect — Name on Hover</h3>
+      <p>When you hover "DEVANSHU PATIL", it glitches — RGB channels split, text shifts randomly for 0.4s, then snaps back. Subtle but memorable.</p>
+      <div style="background:#000;border:1px solid #00ff8833;border-radius:4px;padding:10px;margin-top:8px;font-family:monospace;font-size:16px;font-weight:900;letter-spacing:-.03em;">
+        <span style="color:#fff;text-shadow:2px 0 #ff0040, -2px 0 #00ff88;animation:none;">DEVAN</span><span style="color:#fff;">SHU</span>
+        <span style="display:block;color:#00ff88;margin-top:2px;text-shadow:3px 0 #ff0040,-1px 0 #0040ff;font-size:14px;">PATIL<span style="color:#00ff88">.</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="typewriter" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Typewriter Boot Sequence — Hero Load</h3>
+      <p>On page load, the 3 boot lines type out one by one: "✓ system.init()…" → "✓ stack.verify()…" → "✓ status: open". Gives the feel of a real terminal booting up.</p>
+      <div style="background:#000;border:1px solid #00ff8833;border-radius:4px;padding:10px;margin-top:8px;font-family:monospace;font-size:11px;line-height:1.9;">
+        <div style="color:#00ff88;">✓ <span style="color:#64748b;">system.init() — portfolio loaded</span><span style="background:#00ff88;width:7px;height:12px;display:inline-block;vertical-align:middle;animation:none;margin-left:2px;opacity:.9;"></span></div>
+        <div style="color:#1a1a1a;">✓ stack.verify() — React · Node.js ···</div>
+        <div style="color:#1a1a1a;">✓ status.check() — open to work</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="cursor" onclick="toggleSelect(this)">
+    <div class="letter">D</div>
+    <div class="content">
+      <h3>Custom Cursor Trail — Green Dot</h3>
+      <p>Replaces the default cursor with a small green dot that follows the mouse with a slight lag trail. Looks sharp on desktop, auto-disabled on mobile/touch.</p>
+      <div style="background:#000;border:1px solid #00ff8833;border-radius:4px;padding:10px;margin-top:8px;position:relative;height:60px;overflow:hidden;">
+        <div style="position:absolute;top:20px;left:40px;width:10px;height:10px;border-radius:50%;background:#00ff88;box-shadow:0 0 12px #00ff88;"></div>
+        <div style="position:absolute;top:22px;left:32px;width:6px;height:6px;border-radius:50%;background:#00ff88;opacity:.5;"></div>
+        <div style="position:absolute;top:24px;left:24px;width:4px;height:4px;border-radius:50%;background:#00ff88;opacity:.25;"></div>
+        <div style="position:absolute;bottom:8px;right:12px;font-family:monospace;font-size:10px;color:#334155;">// cursor trail effect</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="counter" onclick="toggleSelect(this)">
+    <div class="letter">E</div>
+    <div class="content">
+      <h3>Counting Numbers — Stats Bar</h3>
+      <p>When the stats bar scrolls into view, numbers count up from 0: "0+ → 4+", "0+ → 7+", "0% → 100%". Each one animates with an easing curve over ~1.2 seconds.</p>
+      <div style="background:#0a0a0a;border:1px solid #1a1a1a;border-radius:4px;padding:10px;margin-top:8px;display:flex;gap:20px;justify-content:center;font-family:monospace;">
+        <div style="text-align:center;">
+          <div style="color:#00ff88;font-size:22px;font-weight:900;">4+</div>
+          <div style="color:#64748b;font-size:9px;letter-spacing:.1em;">PROJECTS</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="color:#00ff88;font-size:22px;font-weight:900;">7+</div>
+          <div style="color:#64748b;font-size:9px;letter-spacing:.1em;">TECHNOLOGIES</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="color:#00ff88;font-size:22px;font-weight:900;">100%</div>
+          <div style="color:#64748b;font-size:9px;letter-spacing:.1em;">PRIVACY-FIRST</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="scanflicker" onclick="toggleSelect(this)">
+    <div class="letter">F</div>
+    <div class="content">
+      <h3>Scanline Flicker — Occasional CRT Effect</h3>
+      <p>Every 8–12 seconds the entire page flickers once like an old CRT monitor — a 60ms brightness dip + scanline flash. Subtle, eerie, very on-theme. Easy to remove if too distracting.</p>
+      <div style="background:#000;border:1px solid #00ff8833;border-radius:4px;padding:10px;margin-top:8px;font-family:monospace;font-size:11px;color:#64748b;">
+        <span style="color:#00ff88;">// random interval: 8000–12000ms</span><br/>
+        body.flicker → opacity: 0.85 → restore<br/>
+        duration: 60ms · easing: step-start
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="particles" onclick="toggleSelect(this)">
+    <div class="letter">G</div>
+    <div class="content">
+      <h3>Floating Particles — Full Page Canvas</h3>
+      <p>Small green dots slowly drift across the full page background. Connected by faint lines when close to each other (like a network graph). Low opacity, never distracts from content.</p>
+      <div style="background:#000;border:1px solid #00ff8833;border-radius:4px;padding:10px;margin-top:8px;position:relative;height:60px;overflow:hidden;">
+        <div style="position:absolute;top:15px;left:20px;width:3px;height:3px;border-radius:50%;background:#00ff88;opacity:.6;box-shadow:0 0 4px #00ff88;"></div>
+        <div style="position:absolute;top:30px;left:60px;width:3px;height:3px;border-radius:50%;background:#00ff88;opacity:.5;"></div>
+        <div style="position:absolute;top:12px;left:100px;width:3px;height:3px;border-radius:50%;background:#00ff88;opacity:.4;"></div>
+        <div style="position:absolute;top:40px;left:140px;width:3px;height:3px;border-radius:50%;background:#00ff88;opacity:.6;"></div>
+        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.15;">
+          <line x1="22" y1="17" x2="62" y2="32" stroke="#00ff88" stroke-width="0.5"/>
+          <line x1="62" y1="32" x2="102" y2="14" stroke="#00ff88" stroke-width="0.5"/>
+          <line x1="102" y1="14" x2="142" y2="42" stroke="#00ff88" stroke-width="0.5"/>
+        </svg>
+        <div style="position:absolute;bottom:6px;right:8px;font-family:monospace;font-size:9px;color:#1a1a1a;">// network particles</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:20px;">Select all the ones you want, then tell me your choices in the terminal (e.g. "A B C E").</p>
