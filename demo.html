@@ -349,11 +349,63 @@
       margin: 0 auto;
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr auto;
       gap: 64px;
       align-items: center;
       position: relative;
       z-index: 2;
+    }
+
+    /* Hero right: orbiting-electron wireframe animation */
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .atom-scene { perspective: 600px; width: 180px; height: 180px; }
+    .atom {
+      position: relative; width: 180px; height: 180px;
+      transform-style: preserve-3d;
+      animation: atomspin 14s linear infinite;
+    }
+    @keyframes atomspin {
+      from { transform: rotateY(0) rotateX(10deg); }
+      to   { transform: rotateY(360deg) rotateX(10deg); }
+    }
+    .nucleus {
+      position: absolute; left: 50%; top: 50%;
+      width: 12px; height: 12px; margin: -6px 0 0 -6px;
+      background: var(--green); border-radius: 50%;
+      box-shadow: 0 0 14px var(--green);
+    }
+    .orbit {
+      position: absolute; left: 50%; top: 50%;
+      width: 180px; height: 72px; margin: -36px 0 0 -90px;
+      border: 1px solid var(--green); border-radius: 50%;
+      opacity: .6; transform-style: preserve-3d;
+    }
+    .orbit.o1 { transform: rotateX(75deg) rotateZ(0deg); }
+    .orbit.o2 { transform: rotateX(75deg) rotateZ(60deg); }
+    .orbit.o3 { transform: rotateX(75deg) rotateZ(120deg); }
+    .electron {
+      position: absolute; left: 50%; top: 50%;
+      width: 8px; height: 8px; margin: -4px 0 0 -4px;
+      background: var(--green); border-radius: 50%;
+      box-shadow: 0 0 8px var(--green);
+      animation: eorbit 3s linear infinite;
+    }
+    .orbit.o2 .electron { animation-delay: -1s; }
+    .orbit.o3 .electron { animation-delay: -2s; }
+    @keyframes eorbit {
+      0%    { transform: translate(90px,0); }
+      12.5% { transform: translate(64px,-25px); }
+      25%   { transform: translate(0,-36px); }
+      37.5% { transform: translate(-64px,-25px); }
+      50%   { transform: translate(-90px,0); }
+      62.5% { transform: translate(-64px,25px); }
+      75%   { transform: translate(0,36px); }
+      87.5% { transform: translate(64px,25px); }
+      100%  { transform: translate(90px,0); }
     }
 
     /* C: boot lines — start hidden */
@@ -799,6 +851,7 @@
     /* ── Responsive ── */
     @media(max-width:900px) {
       .hero-inner,.about-grid,.contact-grid,.exp-grid { grid-template-columns:1fr; }
+      .hero-right { display:none; }
       .skills-grid,.projects-grid { grid-template-columns:repeat(2,1fr); }
       .stats-inner { grid-template-columns:1fr; }
       .nav-toggle { display: flex; }
@@ -905,6 +958,17 @@
         </div>
       </div>
 
+      <div class="hero-right" aria-hidden="true">
+        <div class="atom-scene">
+          <div class="atom">
+            <div class="nucleus"></div>
+            <div class="orbit o1"><div class="electron"></div></div>
+            <div class="orbit o2"><div class="electron"></div></div>
+            <div class="orbit o3"><div class="electron"></div></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -947,11 +1011,11 @@
             <img src="closeup.jpeg" alt="Devanshu Patil" />
           </div>
           <div class="about-actions">
-            <a href="https://drive.google.com/file/d/1lFiz-5GhMTeGKBNapzvT90IqIFbmw8Pw/view?usp=drive_link" target="_blank" class="resume-btn">
+            <a href="https://drive.google.com/file/d/14LBT5_WRk6RmqMAeOVCxa-sVZN3g0iFy/view?usp=drive_link" target="_blank" class="resume-btn">
               View Résumé
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
-            <a href="https://drive.google.com/uc?export=download&id=1lFiz-5GhMTeGKBNapzvT90IqIFbmw8Pw" class="download-btn" aria-label="Download Résumé">
+            <a href="https://drive.google.com/uc?export=download&id=14LBT5_WRk6RmqMAeOVCxa-sVZN3g0iFy" class="download-btn" aria-label="Download Résumé">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             </a>
           </div>

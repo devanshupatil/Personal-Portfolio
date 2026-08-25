@@ -1,0 +1,209 @@
+<h2>What should live in the hero's empty right side?</h2>
+<p class="subtitle">Three on-brand options, shown live in context (left = your existing text block, right = the new element). Click one to select.</p>
+
+<style>
+  :root{
+    --hg: #00ff88;
+    --hg-dim: #00cc6a;
+    --hbg: #000000;
+    --hsurface: #0a0a0a;
+    --hborder: #1a1a1a;
+    --htext: #e2e8f0;
+    --hmuted: #64748b;
+    --hmono: 'JetBrains Mono','Courier New',monospace;
+  }
+  .hero-demo{
+    background:var(--hbg);
+    border:1px solid var(--hborder);
+    border-radius:8px;
+    padding:28px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:24px;
+    align-items:center;
+    min-height:220px;
+    font-family:var(--hmono);
+  }
+  .hero-demo-left{ opacity:.55; }
+  .fake-line{ height:10px; border-radius:2px; background:var(--hmuted); opacity:.3; margin-bottom:10px; }
+  .fake-line.w1{width:40%;} .fake-line.w2{width:80%;} .fake-line.w3{width:60%;} .fake-line.w4{width:70%;}
+  .fake-badge{ display:inline-block; padding:4px 10px; border:1px solid var(--hg); color:var(--hg); font-size:10px; border-radius:3px; margin-bottom:16px; letter-spacing:.08em; }
+  .hero-demo-right{ display:flex; align-items:center; justify-content:center; min-height:180px; }
+  .opt-label{ font-family:var(--hmono); color:var(--hg); font-size:11px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:10px; }
+
+  /* --- Option A: CSS 3D wireframe cube --- */
+  .cube-scene{ perspective:700px; width:120px; height:120px; }
+  .cube{ width:120px; height:120px; position:relative; transform-style:preserve-3d; animation:cubespin 9s infinite linear; }
+  .cube .face{ position:absolute; width:120px; height:120px; border:1px solid var(--hg); background:rgba(0,255,136,.05); box-shadow:0 0 18px rgba(0,255,136,.15) inset; }
+  .cube .face.f1{ transform:translateZ(60px); }
+  .cube .face.f2{ transform:rotateY(180deg) translateZ(60px); }
+  .cube .face.f3{ transform:rotateY(90deg) translateZ(60px); }
+  .cube .face.f4{ transform:rotateY(-90deg) translateZ(60px); }
+  .cube .face.f5{ transform:rotateX(90deg) translateZ(60px); }
+  .cube .face.f6{ transform:rotateX(-90deg) translateZ(60px); }
+  @keyframes cubespin{ from{ transform:rotateX(0) rotateY(0);} to{ transform:rotateX(360deg) rotateY(360deg);} }
+
+  /* --- Option C: terminal monitor --- */
+  .term-card{ width:100%; max-width:280px; background:var(--hsurface); border:1px solid var(--hborder); border-radius:6px; overflow:hidden; }
+  .term-head{ display:flex; align-items:center; gap:6px; padding:8px 10px; border-bottom:1px solid var(--hborder); }
+  .term-dot{ width:8px; height:8px; border-radius:50%; }
+  .term-dot.r{background:#ff5f56;} .term-dot.y{background:#ffbd2e;} .term-dot.g{background:#27c93f;}
+  .term-title{ margin-left:6px; font-size:10px; color:var(--hmuted); }
+  .term-body{ padding:12px; font-size:11px; color:var(--htext); line-height:1.7; min-height:150px; }
+  .term-body .prompt{ color:var(--hg); }
+  .bar-row{ display:flex; align-items:center; gap:8px; margin-top:4px; }
+  .bar-name{ width:60px; color:var(--hmuted); font-size:10px; }
+  .bar-track{ flex:1; height:6px; background:var(--hborder); border-radius:3px; overflow:hidden; }
+  .bar-fill{ height:100%; background:var(--hg); border-radius:3px; transition:width .8s ease; }
+  .bar-pct{ width:32px; text-align:right; font-size:10px; color:var(--hmuted); }
+  .blink-cur{ display:inline-block; width:6px; height:12px; background:var(--hg); animation:blk 1s step-end infinite; vertical-align:middle; }
+  @keyframes blk{ 50%{ opacity:0; } }
+</style>
+
+<div class="options" data-multiselect="false">
+
+  <div class="option" data-choice="cube" onclick="toggleSelect(this)" style="display:block;">
+    <div class="opt-label">A — Rotating Wireframe Cube</div>
+    <div class="hero-demo">
+      <div class="hero-demo-left">
+        <div class="fake-badge">● AVAILABLE FOR WORK</div>
+        <div class="fake-line w1"></div>
+        <div class="fake-line w2"></div>
+        <div class="fake-line w3"></div>
+      </div>
+      <div class="hero-demo-right">
+        <div class="cube-scene"><div class="cube">
+          <div class="face f1"></div><div class="face f2"></div><div class="face f3"></div>
+          <div class="face f4"></div><div class="face f5"></div><div class="face f6"></div>
+        </div></div>
+      </div>
+    </div>
+    <p style="margin-top:8px;">Pure CSS 3D transform, continuously rotating. Zero JS, near-zero performance cost. Literally the "moving cube" you described &mdash; clean, geometric, matches the minimal terminal aesthetic.</p>
+  </div>
+
+  <div class="option" data-choice="ascii" onclick="toggleSelect(this)" style="display:block; margin-top:20px;">
+    <div class="opt-label">B — ASCII Spinning Wireframe</div>
+    <div class="hero-demo">
+      <div class="hero-demo-left">
+        <div class="fake-badge">● AVAILABLE FOR WORK</div>
+        <div class="fake-line w1"></div>
+        <div class="fake-line w2"></div>
+        <div class="fake-line w3"></div>
+      </div>
+      <div class="hero-demo-right">
+        <pre id="ascii-cube" style="color:var(--hg); font-size:9px; line-height:1; margin:0; text-shadow:0 0 6px rgba(0,255,136,.5);"></pre>
+      </div>
+    </div>
+    <p style="margin-top:8px;">Same rotating cube, but rendered as live ASCII characters like a real terminal program (classic hacker-demoscene move). More distinctive/memorable than a smooth CSS shape &mdash; screams "developer portfolio."</p>
+  </div>
+
+  <div class="option" data-choice="terminal" onclick="toggleSelect(this)" style="display:block; margin-top:20px;">
+    <div class="opt-label">C — Live System Monitor Panel</div>
+    <div class="hero-demo">
+      <div class="hero-demo-left">
+        <div class="fake-badge">● AVAILABLE FOR WORK</div>
+        <div class="fake-line w1"></div>
+        <div class="fake-line w2"></div>
+        <div class="fake-line w3"></div>
+      </div>
+      <div class="hero-demo-right">
+        <div class="term-card">
+          <div class="term-head">
+            <div class="term-dot r"></div><div class="term-dot y"></div><div class="term-dot g"></div>
+            <div class="term-title">status.sh</div>
+          </div>
+          <div class="term-body" id="term-body">
+            <div><span class="prompt">$</span> <span id="term-cmd"></span><span class="blink-cur"></span></div>
+            <div id="term-bars" style="margin-top:10px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:8px;">Not a decorative shape &mdash; a small "live" terminal that types a command and animates real-looking skill/stat bars. Reinforces the hacker/dev narrative you've already built with the boot sequence and typing effect elsewhere on the page.</p>
+  </div>
+
+</div>
+
+<script>
+  // Option B: ASCII rotating wireframe cube
+  (function(){
+    const pre = document.getElementById('ascii-cube');
+    const W = 42, H = 24;
+    const verts = [
+      [-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],
+      [-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]
+    ];
+    const edges = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+    let ax = 0, ay = 0;
+    function rotate(v){
+      let [x,y,z] = v;
+      let cy=Math.cos(ay), sy=Math.sin(ay);
+      let x1 = x*cy - z*sy, z1 = x*sy + z*cy;
+      let cx=Math.cos(ax), sx=Math.sin(ax);
+      let y1 = y*cx - z1*sx, z2 = y*sx + z1*cx;
+      return [x1,y1,z2];
+    }
+    function project(v){
+      const scale = 8, dist = 4;
+      const f = scale / (dist + v[2]);
+      return [Math.round(W/2 + v[0]*f*2), Math.round(H/2 + v[1]*f)];
+    }
+    function line(buf, x0,y0,x1,y1,ch){
+      const dx = Math.abs(x1-x0), dy = Math.abs(y1-y0);
+      const sx = x0<x1?1:-1, sy = y0<y1?1:-1;
+      let err = dx-dy, x=x0, y=y0;
+      while(true){
+        if(y>=0 && y<H && x>=0 && x<W) buf[y][x]=ch;
+        if(x===x1 && y===y1) break;
+        const e2=2*err;
+        if(e2>-dy){ err-=dy; x+=sx; }
+        if(e2<dx){ err+=dx; y+=sy; }
+      }
+    }
+    function render(){
+      const buf = Array.from({length:H}, ()=>Array(W).fill(' '));
+      const proj = verts.map(v=>project(rotate(v)));
+      edges.forEach(([a,b])=>line(buf, proj[a][0],proj[a][1],proj[b][0],proj[b][1], '+'));
+      pre.textContent = buf.map(r=>r.join('')).join('\n');
+      ax += 0.018; ay += 0.026;
+      requestAnimationFrame(render);
+    }
+    render();
+  })();
+
+  // Option C: terminal monitor
+  (function(){
+    const cmdEl = document.getElementById('term-cmd');
+    const barsEl = document.getElementById('term-bars');
+    const cmd = './status.sh --watch';
+    let i = 0;
+    const bars = [
+      {name:'CPU', pct: 34}, {name:'MEM', pct: 58}, {name:'NET', pct: 12}
+    ];
+    function renderBars(){
+      barsEl.innerHTML = bars.map(b => `
+        <div class="bar-row">
+          <div class="bar-name">${b.name}</div>
+          <div class="bar-track"><div class="bar-fill" style="width:${b.pct}%"></div></div>
+          <div class="bar-pct">${b.pct}%</div>
+        </div>`).join('');
+    }
+    function typeCmd(){
+      if(i <= cmd.length){
+        cmdEl.textContent = cmd.slice(0,i);
+        i++;
+        setTimeout(typeCmd, 55);
+      } else {
+        renderBars();
+        setInterval(()=>{
+          bars.forEach(b=>{
+            b.pct = Math.max(5, Math.min(95, b.pct + (Math.random()*20-10)));
+            b.pct = Math.round(b.pct);
+          });
+          renderBars();
+        }, 1400);
+      }
+    }
+    typeCmd();
+  })();
+</script>
