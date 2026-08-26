@@ -522,57 +522,14 @@
             align-items: center;
         }
 
-        /* Hero right: orbiting-electron wireframe animation */
+        /* Hero right: orbital sphere canvas */
         .hero-right {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .atom-scene { perspective: 600px; width: 180px; height: 180px; }
-        .atom {
-            position: relative; width: 180px; height: 180px;
-            transform-style: preserve-3d;
-            animation: atomspin 14s linear infinite;
-        }
-        @keyframes atomspin {
-            from { transform: rotateY(0) rotateX(10deg); }
-            to   { transform: rotateY(360deg) rotateX(10deg); }
-        }
-        .nucleus {
-            position: absolute; left: 50%; top: 50%;
-            width: 12px; height: 12px; margin: -6px 0 0 -6px;
-            background: var(--green); border-radius: 50%;
-            box-shadow: 0 0 14px var(--green);
-        }
-        .orbit {
-            position: absolute; left: 50%; top: 50%;
-            width: 180px; height: 72px; margin: -36px 0 0 -90px;
-            border: 1px solid var(--green); border-radius: 50%;
-            opacity: .6; transform-style: preserve-3d;
-        }
-        .orbit.o1 { transform: rotateX(75deg) rotateZ(0deg); }
-        .orbit.o2 { transform: rotateX(75deg) rotateZ(60deg); }
-        .orbit.o3 { transform: rotateX(75deg) rotateZ(120deg); }
-        .electron {
-            position: absolute; left: 50%; top: 50%;
-            width: 8px; height: 8px; margin: -4px 0 0 -4px;
-            background: var(--green); border-radius: 50%;
-            box-shadow: 0 0 8px var(--green);
-            animation: eorbit 3s linear infinite;
-        }
-        .orbit.o2 .electron { animation-delay: -1s; }
-        .orbit.o3 .electron { animation-delay: -2s; }
-        @keyframes eorbit {
-            0%    { transform: translate(90px,0); }
-            12.5% { transform: translate(64px,-25px); }
-            25%   { transform: translate(0,-36px); }
-            37.5% { transform: translate(-64px,-25px); }
-            50%   { transform: translate(-90px,0); }
-            62.5% { transform: translate(-64px,25px); }
-            75%   { transform: translate(0,36px); }
-            87.5% { transform: translate(64px,25px); }
-            100%  { transform: translate(90px,0); }
-        }
+        .orbital-sphere-scene { width: 440px; height: 440px; }
+        #orbital-sphere-canvas { display: block; width: 100%; height: 100%; }
 
         .hero-badge {
             display: inline-flex;
@@ -621,7 +578,7 @@
         }
 
         .hero-name {
-            font-size: clamp(48px, 7vw, 76px);
+            font-size: clamp(32px, 4.5vw, 52px);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -.03em;
@@ -1541,13 +1498,8 @@
             </div>
 
             <div class="hero-right" aria-hidden="true">
-                <div class="atom-scene">
-                    <div class="atom">
-                        <div class="nucleus"></div>
-                        <div class="orbit o1"><div class="electron"></div></div>
-                        <div class="orbit o2"><div class="electron"></div></div>
-                        <div class="orbit o3"><div class="electron"></div></div>
-                    </div>
+                <div class="orbital-sphere-scene">
+                    <canvas id="orbital-sphere-canvas"></canvas>
                 </div>
             </div>
         </div>
@@ -1827,7 +1779,7 @@
             <div class="resume-grid">
                 <div>
                     <div class="section-label reveal">Experience</div>
-                    <h2 class="section-title reveal">Professional Journey</h2>
+                    <h2 class="section-title reveal" style="font-size:clamp(24px, 3.2vw, 40px)">Professional Journey</h2>
                     <p class="section-sub reveal" style="margin-bottom:44px">Building real things since day one.</p>
                     <div class="timeline">
                         <div class="tl-item reveal">
@@ -1882,6 +1834,18 @@
                             <div class="tl-title">Hacktoberfest Contributor</div>
                             <div class="tl-desc">Contributed to multiple open-source projects during Hacktoberfest 2023
                                 — a global celebration of open-source development.</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="section-label reveal">Education</div>
+                    <h2 class="section-title reveal" style="white-space:nowrap;font-size:clamp(24px, 3.2vw, 40px)">Academic Background</h2>
+                    <p class="section-sub reveal" style="margin-bottom:44px">The foundation behind the code.</p>
+                    <div class="timeline">
+                        <div class="tl-item reveal">
+                            <div class="tl-year">2026 — PRESENT</div>
+                            <div class="tl-title">Master of Computer Applications (MCA)</div>
+                            <div class="tl-desc">Indira Gandhi National Open University (IGNOU) · Pursuing.</div>
                         </div>
                         <div class="tl-item reveal">
                             <div class="tl-year">03/2023 — 06/2026</div>
@@ -2013,6 +1977,85 @@
                 localStorage.setItem('theme', next);
                 setTimeout(() => root.classList.remove('theme-transition'), 500);
             });
+        })();
+
+        // ── Orbital Sphere (hero right) ──
+        (function () {
+            const canvas = document.getElementById('orbital-sphere-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const size = 440, dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = size * dpr; canvas.height = size * dpr;
+            ctx.scale(dpr, dpr);
+
+            const cx = size / 2, cy = size / 2, radius = 160;
+            const N = 90, points = [];
+            for (let i = 0; i < N; i++) {
+                const t = i / (N - 1);
+                const phi = Math.acos(1 - 2 * t);
+                const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+                points.push({ x: Math.sin(phi) * Math.cos(theta), y: Math.cos(phi), z: Math.sin(phi) * Math.sin(theta) });
+            }
+            const ringTilts = [0, 60, 120];
+
+            function rotateY(p, a) {
+                const c = Math.cos(a), s = Math.sin(a);
+                return { x: p.x * c + p.z * s, y: p.y, z: -p.x * s + p.z * c };
+            }
+            function rotateX(p, a) {
+                const c = Math.cos(a), s = Math.sin(a);
+                return { x: p.x, y: p.y * c - p.z * s, z: p.y * s + p.z * c };
+            }
+
+            let angle = 0, visible = true, frame = 0;
+            function draw() {
+                ctx.clearRect(0, 0, size, size);
+
+                const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 0.55);
+                glow.addColorStop(0, 'rgba(167,139,250,.55)');
+                glow.addColorStop(1, 'rgba(167,139,250,0)');
+                ctx.fillStyle = glow;
+                ctx.beginPath(); ctx.arc(cx, cy, radius * 0.55, 0, Math.PI * 2); ctx.fill();
+
+                ringTilts.forEach((tilt) => {
+                    ctx.save();
+                    ctx.translate(cx, cy);
+                    ctx.rotate(angle * 0.4 + (tilt * Math.PI) / 180);
+                    ctx.scale(1, 0.26);
+                    ctx.beginPath();
+                    ctx.arc(0, 0, radius * 1.15, 0, Math.PI * 2);
+                    ctx.strokeStyle = 'rgba(167,139,250,.35)';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                    ctx.restore();
+                });
+
+                const projected = points.map((p) => {
+                    let r = rotateY(p, angle);
+                    r = rotateX(r, 0.35);
+                    const scale = 300 / (300 - r.z * radius);
+                    return { x: cx + r.x * radius * scale, y: cy + r.y * radius * scale, z: r.z };
+                }).sort((a, b) => a.z - b.z);
+
+                projected.forEach((p) => {
+                    const depth = (p.z + 1) / 2;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 1 + depth * 1.8, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(196,181,253,${0.25 + depth * 0.65})`;
+                    ctx.shadowBlur = 6 * depth; ctx.shadowColor = '#a78bfa';
+                    ctx.fill(); ctx.shadowBlur = 0;
+                });
+
+                angle += 0.006;
+                frame = visible && !document.hidden ? requestAnimationFrame(draw) : 0;
+            }
+
+            new IntersectionObserver(([entry]) => {
+                visible = entry.isIntersecting;
+                if (visible && !frame) frame = requestAnimationFrame(draw);
+            }).observe(canvas);
+
+            draw();
         })();
 
         // ── Mobile Nav Toggle ──
