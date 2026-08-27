@@ -716,7 +716,7 @@
       content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
       width: 1px; background: var(--border);
     }
-    .tl-item { position: relative; padding-bottom: 36px; }
+    .tl-item { position: relative; padding-bottom: 36px; cursor: default; }
     .tl-item::before {
       content: ''; position: absolute; left: -30px; top: 6px;
       width: 8px; height: 8px; border-radius: 50%;
@@ -724,10 +724,228 @@
     }
     .tl-item:last-child::before { background: var(--faint); box-shadow: none; }
     .tl-year { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--green); letter-spacing: .1em; margin-bottom: 5px; }
-    .tl-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .tl-title {
+      font-size: 16px; font-weight: 700; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .tl-cert-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      color: #000; background: var(--green);
+      border-radius: 4px; padding: 2px 7px;
+      letter-spacing: .06em; text-transform: uppercase;
+      cursor: pointer; flex-shrink: 0;
+      transition: background .2s, transform .15s;
+      user-select: none;
+    }
+    .tl-cert-badge:hover { background: var(--green-dim); transform: translateY(-1px); }
     .tl-desc { font-size: 13px; color: var(--muted); line-height: 1.75; }
     .tl-desc strong { color: var(--text); }
     .tl-list { margin-top: 8px; margin-left: 14px; line-height: 2; }
+
+    /* ── Experience 2-col layout ── */
+    .exp-layout { display: grid; grid-template-columns: 1fr 380px; gap: 56px; align-items: start; }
+    .exp-cert-panel {
+      position: sticky; top: 88px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .exp-cert-panel.has-cert { border-color: var(--green-border); box-shadow: 0 0 24px rgba(0,255,136,.07); }
+    .exp-cert-panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--green-bg);
+      border-bottom: 1px solid var(--border);
+      min-height: 44px;
+    }
+    .exp-cert-panel.has-cert .exp-cert-panel-header { border-bottom-color: var(--green-border); }
+    .exp-cert-panel-title {
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      color: var(--green); text-transform: uppercase; letter-spacing: .1em;
+    }
+    .exp-cert-panel-link {
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      color: var(--green); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 4px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s;
+    }
+    .exp-cert-panel.has-cert .exp-cert-panel-link { opacity: 1; pointer-events: auto; }
+    .exp-cert-panel-link:hover { opacity: .72; }
+    .exp-cert-empty {
+      padding: 56px 24px; text-align: center;
+      transition: opacity .25s, max-height .3s, padding .3s;
+      max-height: 200px;
+    }
+    .exp-cert-empty-icon { font-size: 36px; margin-bottom: 12px; opacity: .35; }
+    .exp-cert-empty-text { font-family: var(--mono); font-size: 11px; color: var(--faint); line-height: 1.7; }
+    .exp-cert-img-wrap {
+      background: #fff;
+      opacity: 0; max-height: 0; overflow: hidden;
+      transition: opacity .3s ease, max-height .35s ease;
+    }
+    .exp-cert-panel.has-cert .exp-cert-img-wrap { opacity: 1; max-height: 420px; }
+    .exp-cert-panel.has-cert .exp-cert-empty { opacity: 0; max-height: 0; overflow: hidden; padding: 0; }
+    .exp-cert-img-wrap img { width: 100%; display: block; }
+    .exp-cert-img-wrap iframe { width: 100%; height: 260px; border: none; display: block; background: #fff; }
+    .exp-cert-footer {
+      padding: 10px 16px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono); font-size: 11px; color: var(--muted);
+      opacity: 0; transition: opacity .25s;
+      min-height: 36px;
+    }
+    .exp-cert-panel.has-cert .exp-cert-footer { opacity: 1; }
+    @media(max-width:1100px) { .exp-layout { grid-template-columns: 1fr 300px; gap: 36px; } }
+    @media(max-width:900px)  { .exp-layout { grid-template-columns: 1fr; } .exp-cert-panel { position: static; } }
+
+    /* ── Vertical Tabs (Services) ── */
+    .vtabs-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: center; }
+    .vtabs-list { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .vtab-btn {
+      background: none; border: none; padding: 24px 0 24px 28px; text-align: left;
+      cursor: pointer; position: relative; display: flex; align-items: flex-start; gap: 16px;
+      border-top: 1px solid var(--border); transition: color .3s ease;
+      color: var(--muted); width: 100%;
+    }
+    .vtab-btn:first-child { border-top: none; }
+    .vtab-track {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border);
+    }
+    .vtab-progress {
+      position: absolute; top: 0; left: 0; width: 100%; height: 0%;
+      background: var(--green); transform-origin: top;
+    }
+    .vtab-btn.active .vtab-progress {
+      animation: vtabFill 5s linear forwards;
+    }
+    .vtabs-gallery:hover .vtab-btn.active .vtab-progress,
+    .vtab-btn.paused .vtab-progress {
+      animation-play-state: paused;
+    }
+    @keyframes vtabFill {
+      from { height: 0%; }
+      to { height: 100%; }
+    }
+    .vtab-id { font-family: var(--mono); font-size: 10px; font-weight: 700; opacity: .5; margin-top: 4px; }
+    .vtab-content { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .vtab-title { font-size: 26px; font-weight: 500; letter-spacing: -.02em; color: var(--muted); transition: color .3s ease; }
+    .vtab-btn.active .vtab-title, .vtab-btn:hover .vtab-title { color: var(--text); }
+    .vtab-desc-wrap {
+      max-height: 0; opacity: 0; overflow: hidden;
+      transition: max-height .4s cubic-bezier(0.23, 1, 0.32, 1), opacity .3s ease;
+    }
+    .vtab-btn.active .vtab-desc-wrap { max-height: 120px; opacity: 1; }
+    .vtab-desc { font-size: 13px; color: var(--muted); line-height: 1.6; padding-bottom: 4px; }
+    
+    .vtabs-gallery {
+      position: relative; aspect-ratio: 16/11; border-radius: 24px;
+      overflow: hidden; background: var(--surface); border: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0,0,0,.3);
+    }
+    .vtabs-img-container { width: 100%; height: 100%; position: relative; overflow: hidden; }
+    .vtabs-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transform: translateY(40px) scale(1.03); transition: opacity .45s ease, transform .45s ease;
+    }
+    .vtabs-img.active { opacity: 1; transform: translateY(0) scale(1); z-index: 1; }
+    .vtabs-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.5), transparent 40%);
+      pointer-events: none; z-index: 2;
+    }
+    .vtabs-controls {
+      position: absolute; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 10;
+    }
+    .vtabs-nav-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(11,11,18,.75); backdrop-filter: blur(8px);
+      border: 1px solid var(--border); color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .2s ease;
+    }
+    .vtabs-nav-btn:hover { background: var(--surface); border-color: var(--green); transform: scale(1.05); }
+    .vtabs-nav-btn:active { transform: scale(0.92); }
+    @media(max-width:900px) {
+      .vtabs-grid { grid-template-columns: 1fr; gap: 32px; }
+      .vtabs-gallery { aspect-ratio: 4/3; }
+    }
+
+    /* ── Vertical Tabs (Experience) ── */
+    .etabs-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: start; }
+    .etabs-left { position: relative; }
+    .etabs-list { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .etab-btn {
+      background: none; border: none; padding: 24px 0 24px 28px; text-align: left;
+      cursor: pointer; position: relative; display: flex; align-items: flex-start; gap: 16px;
+      border-top: 1px solid var(--border); transition: color .3s ease;
+      color: var(--muted); width: 100%;
+    }
+    .etab-btn:first-child { border-top: none; }
+    .etabs-list::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border);
+    }
+    .etab-btn .vtab-track { position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .etab-btn .vtab-progress { position: absolute; top: 0; left: 0; width: 100%; height: 0%; background: var(--green); transform-origin: top; }
+    .etab-btn.active .vtab-progress { animation: vtabFill 5s linear forwards; }
+    .etabs-gallery:hover .etab-btn.active .vtab-progress,
+    .etab-btn.paused .vtab-progress { animation-play-state: paused; }
+    .vtab-id { font-family: var(--mono); font-size: 10px; font-weight: 700; opacity: .5; margin-top: 4px; }
+    .vtab-content { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .vtab-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+    .vtab-company { font-weight: 500; color: var(--green); }
+    .vtab-period { font-family: var(--mono); opacity: .7; }
+    .vtab-badge { font-size: 10px; padding: 2px 8px; border-radius: 99px; background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); text-transform: uppercase; letter-spacing: .04em; }
+    .vtab-title { font-size: 24px; font-weight: 500; letter-spacing: -.02em; color: var(--muted); transition: color .3s ease; line-height: 1.2; }
+    .etab-btn.active .vtab-title, .etab-btn:hover .vtab-title { color: var(--text); }
+    .vtab-desc-wrap { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .4s cubic-bezier(0.23, 1, 0.32, 1), opacity .3s ease; }
+    .etab-btn.active .vtab-desc-wrap { max-height: 200px; opacity: 1; }
+    .vtab-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    .etabs-gallery { position: relative; display: flex; flex-direction: column; height: 100%; min-height: 500px; }
+    .etabs-gallery .vtabs-img-container { flex: 1; position: relative; overflow: hidden; border-radius: 24px; background: var(--surface); border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+    .etabs-gallery .vtabs-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: translateY(40px) scale(1.03); transition: opacity .45s ease, transform .45s ease; }
+    .etabs-gallery .vtabs-img.active { opacity: 1; transform: translateY(0) scale(1); z-index: 1; }
+    .etabs-gallery .vtabs-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.5), transparent 40%); pointer-events: none; z-index: 2; }
+    .etabs-gallery .vtabs-controls { position: absolute; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 10; }
+    .etabs-gallery .vtabs-nav-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(11,11,18,.75); backdrop-filter: blur(8px); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .2s ease; }
+    .etabs-gallery .vtabs-nav-btn:hover { background: var(--surface); border-color: var(--green); transform: scale(1.05); }
+    .etabs-gallery .vtabs-nav-btn:active { transform: scale(0.92); }
+
+    /* Experience Detail Panel */
+    .etabs-detail { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,0)); border-radius: 24px 24px 0 0; padding: 24px; z-index: 5; min-height: 180px; max-height: 60%; overflow-y: auto; }
+    .etabs-detail-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .etabs-detail-title { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .08em; }
+    .etabs-detail-link { font-size: 12px; color: var(--green); text-decoration: underline; opacity: 0; pointer-events: none; transition: opacity .2s; }
+    .etabs-detail-link.visible { opacity: 1; pointer-events: auto; }
+    .etabs-detail-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; color: var(--faint); }
+    .etabs-detail-icon { font-size: 32px; margin-bottom: 12px; opacity: .3; }
+    .etabs-detail-content { display: flex; flex-direction: column; gap: 12px; }
+    .etabs-project-group { margin-top: 4px; }
+    .etabs-project-group-title { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; font-family: var(--mono); }
+    .etabs-projects { display: flex; flex-direction: column; gap: 8px; }
+    .etabs-project { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+    .etabs-project-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .etabs-project-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+    .etabs-project-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .etabs-project-link { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; padding: 6px 10px; border-radius: 6px; background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); text-decoration: none; transition: all .2s; }
+    .etabs-project-link:hover { background: var(--green); color: var(--bg); transform: translateY(-1px); }
+    .etabs-project-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+    .etabs-certificates { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .etabs-cert-link { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; transition: all .2s; }
+    .etabs-cert-link:hover { border-color: var(--green); color: var(--green); background: var(--green-bg); }
+    .etabs-cert-link svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--green); }
+
+    @media(max-width:900px) {
+      .etabs-grid { grid-template-columns: 1fr; gap: 32px; }
+      .etabs-gallery { min-height: 400px; }
+      .etabs-detail { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; min-height: auto; max-height: none; }
+    }
+    @media(max-width:600px) {
+      .etab-btn { padding: 20px 0 20px 20px; }
+    }
 
     .resume-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -807,8 +1025,25 @@
 
     /* ── Responsive ── */
     @media(max-width:900px) {
-      .hero-inner,.about-grid,.contact-grid,.exp-grid { grid-template-columns:1fr; }
-      .hero-right { display:none; }
+      .hero { position: relative; overflow: hidden; }
+      .hero-inner { grid-template-columns: 1fr; position: relative; z-index: 2; }
+      .hero-right {
+        display: flex;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.38;
+      }
+      .orbital-sphere-scene {
+        width: min(85vw, 420px);
+        height: min(85vw, 420px);
+      }
+      .about-grid,.contact-grid,.exp-grid { grid-template-columns:1fr; }
       .skills-grid,.projects-grid { grid-template-columns:repeat(2,1fr); }
       .stats-inner { grid-template-columns:1fr; }
       .nav-toggle { display: flex; }
@@ -855,6 +1090,7 @@
       </a>
       <nav class="nav-links">
         <a href="#about">about</a>
+        <a href="#services">services</a>
         <a href="#skills">skills</a>
         <a href="#projects">projects</a>
         <a href="#resume">experience</a>
@@ -981,6 +1217,84 @@
     </div>
   </section>
 
+  <!-- ═══ SERVICES (VERTICAL TABS) ═══ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="vtabs-grid">
+        <!-- LEFT: Vertical Tabs Content -->
+        <div class="vtabs-left">
+          <div class="space-y-1" style="margin-bottom:36px">
+            <h2 class="section-title reveal" style="font-size:clamp(28px, 3.5vw, 44px);margin-bottom:6px">How I can help you</h2>
+            <span class="section-label reveal" style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase">(SERVICES)</span>
+          </div>
+
+          <div class="vtabs-list">
+            <!-- Tab 1 -->
+            <button class="vtab-btn active" data-index="0">
+              <div class="vtab-track">
+                <div class="vtab-progress"></div>
+              </div>
+              <span class="vtab-id">/01</span>
+              <div class="vtab-content">
+                <div class="vtab-title">Web Development</div>
+                <div class="vtab-desc-wrap">
+                  <p class="vtab-desc">Creating beautiful, functional, and user-centric digital experiences with modern web standards, React, and responsive CSS.</p>
+                </div>
+              </div>
+            </button>
+
+            <!-- Tab 2 -->
+            <button class="vtab-btn" data-index="1">
+              <div class="vtab-track">
+                <div class="vtab-progress"></div>
+              </div>
+              <span class="vtab-id">/02</span>
+              <div class="vtab-content">
+                <div class="vtab-title">Full-Stack Platforms</div>
+                <div class="vtab-desc-wrap">
+                  <p class="vtab-desc">Building high-performance APIs, role-based dashboards, authentication systems, and database integrations with Node.js, Spring Boot, and PostgreSQL.</p>
+                </div>
+              </div>
+            </button>
+
+            <!-- Tab 3 -->
+            <button class="vtab-btn" data-index="2">
+              <div class="vtab-track">
+                <div class="vtab-progress"></div>
+              </div>
+              <span class="vtab-id">/03</span>
+              <div class="vtab-content">
+                <div class="vtab-title">Desktop &amp; Extensions</div>
+                <div class="vtab-desc-wrap">
+                  <p class="vtab-desc">Crafting privacy-first desktop software with Electron, browser extensions for Chrome/Firefox, and custom local developer utilities.</p>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Interactive Gallery -->
+        <div class="vtabs-gallery reveal" id="vtabs-gallery">
+          <div class="vtabs-img-container">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&amp;w=1200" alt="Web Development" class="vtabs-img active" />
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&amp;w=1200" alt="Full-Stack Platforms" class="vtabs-img" />
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&amp;w=1200" alt="Desktop &amp; Extensions" class="vtabs-img" />
+            <div class="vtabs-overlay"></div>
+          </div>
+
+          <div class="vtabs-controls">
+            <button class="vtabs-nav-btn" id="vtabs-prev" aria-label="Previous service">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="vtabs-nav-btn" id="vtabs-next" aria-label="Next service">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ SKILLS ═══ -->
   <section class="section" id="skills" style="background:var(--surface)">
     <div class="container">
@@ -1013,17 +1327,110 @@
     </div>
   </section>
 
-  <!-- ═══ EXPERIENCE ═══ -->
+<!-- ═══ EXPERIENCE (Vertical Tabs) ═══ -->
   <section class="section" id="resume" style="background:var(--surface)">
     <div class="container">
       <div class="section-label reveal">Experience</div>
       <h2 class="section-title reveal" style="font-size:clamp(24px, 3.2vw, 40px)">Professional Journey</h2>
       <p class="section-sub reveal" style="margin-bottom:40px">Building real things since day one.</p>
-      <div class="timeline">
-        <div class="tl-item reveal"><div class="tl-year">FEB 2026 — MAY 2026</div><div class="tl-title">Full Stack Web Developer Trainee — SPCL Infotech Services Pvt. Ltd.</div><div class="tl-desc">Completed <strong>6 end-to-end assignments</strong> covering UI/UX design, responsive layouts, form validation, data visualization, and deployment.<ul class="tl-list"><li>🗂️ <strong>Personal Portfolio Website</strong></li><li>🏨 <strong>Hotel Booking Form</strong></li><li>🎬 <strong>Movie Listing &amp; Rating UI</strong></li><li>🛍️ <strong>Online Store Homepage</strong></li><li>💰 <strong>Personal Finance Tracker</strong></li><li>✈️ <strong>Travel Agency Website</strong></li></ul></div></div>
-        <div class="tl-item reveal"><div class="tl-year">FEB 2026 — MAR 2026</div><div class="tl-title">Frontend Developer Intern — Search Point</div><div class="tl-desc">Built responsive UIs, improved UX, and integrated APIs during a verified 38-day internship. Delivered <strong>3 feature-complete UI modules</strong>.</div></div>
-        <div class="tl-item reveal"><div class="tl-year">2024 — PRESENT</div><div class="tl-title">Full-Stack Engineer — Freelance &amp; Open Source</div><div class="tl-desc">Building developer tools, privacy-first desktop apps, and scalable web platforms. Creator of TimeStream v1.2.0.</div></div>
-        <div class="tl-item reveal"><div class="tl-year">2023</div><div class="tl-title">Hacktoberfest Contributor</div><div class="tl-desc">Contributed to multiple open-source projects during Hacktoberfest 2023.</div></div>
+
+      <div class="vtabs-grid etabs-grid">
+        <!-- LEFT: Experience Tabs -->
+        <div class="vtabs-left etabs-left">
+          <div class="vtabs-list etabs-list" role="tablist" aria-label="Experience entries">
+            <button class="vtab-btn etab-btn active" role="tab" aria-selected="true" data-index="0" data-cert="Certificates/SPCL.png" data-cert-type="image" data-cert-label="SPCL Certificate" data-projects='[{"name":"Personal Portfolio Website","desc":"Responsive, animated portfolio with interactive elements & contact form.","links":[{"label":"Certificate","href":"SPCL /Portfolio.pdf","type":"pdf"}]},{"name":"Hotel Booking Form","desc":"Dynamic form with date validation, room-type selection & responsive design.","links":[{"label":"Certificate","href":"SPCL /Hotel Booking Form.pdf","type":"pdf"}]},{"name":"Movie Listing & Rating UI","desc":"Grid-based movie browser with star-rating system & interactive hover details.","links":[{"label":"Certificate","href":"SPCL /Movie Listing and Rating Website UI.pdf","type":"pdf"}]},{"name":"Online Store Homepage","desc":"Categorized product cards with filter & sort functionality.","links":[{"label":"Certificate","href":"SPCL /Online Store Homepage with Product Categories.pdf","type":"pdf"}]},{"name":"Personal Finance Tracker","desc":"Dashboard with expense management, budget tracking, charts & LocalStorage.","links":[{"label":"Certificate","href":"SPCL /Personal_Finance_Tracker_Task.pdf","type":"pdf"}]},{"name":"Travel Agency Website","desc":"5-page responsive site with listings, pricing, gallery & contact form.","links":[{"label":"Certificate","href":"SPCL /travel_agency_assignment (1).pdf","type":"pdf"}]}]'>
+              <div class="vtab-track"><div class="vtab-progress"></div></div>
+              <span class="vtab-id">/01</span>
+              <div class="vtab-content">
+                <div class="vtab-title">Full Stack Web Developer Trainee</div>
+                <div class="vtab-meta">
+                  <span class="vtab-company">SPCL Infotech Services Pvt. Ltd.</span>
+                  <span class="vtab-period">FEB 2026 — MAY 2026</span>
+                  <span class="vtab-badge">Full-time</span>
+                </div>
+                <div class="vtab-desc-wrap">
+                  <p class="vtab-desc">Completed <strong>6 end-to-end assignments</strong> covering UI/UX design, responsive layouts, form validation, data visualization, and deployment — all tracked via GitHub with proper version control.</p>
+                </div>
+              </div>
+            </button>
+
+            <button class="vtab-btn etab-btn" role="tab" aria-selected="false" data-index="1" data-cert="Certificates/search point internship certificate.pdf" data-cert-type="pdf" data-cert-label="Search Point Certificate" data-projects='[{"name":"Verified Achievement Record","desc":"38-day verified internship completion certificate.","links":[{"label":"View Certificate","href":"Certificates/search point internship certificate.pdf","type":"pdf"}]}]'>
+              <div class="vtab-track"><div class="vtab-progress"></div></div>
+              <span class="vtab-id">/02</span>
+              <div class="vtab-content">
+                <div class="vtab-title">Frontend Developer Intern</div>
+                <div class="vtab-meta">
+                  <span class="vtab-company">Search Point</span>
+                  <span class="vtab-period">FEB 2026 — MAR 2026</span>
+                  <span class="vtab-badge">Internship</span>
+                </div>
+                <div class="vtab-desc-wrap">
+                  <p class="vtab-desc">Built responsive UIs, improved user experience, and integrated APIs during a verified 38-day internship. Delivered <strong>3 feature-complete UI modules</strong> across key product pages.</p>
+                </div>
+              </div>
+            </button>
+
+            <button class="vtab-btn etab-btn" role="tab" aria-selected="false" data-index="2" data-cert="" data-cert-type="" data-cert-label="" data-projects='[{"name":"TimeStream v1.2.0","desc":"Fully local developer-activity tracker (Electron + SQLite) with Chrome/Firefox extension and AI-assisted filtering.","links":[{"label":"Live Demo","href":"https://timestream.netlify.app/","type":"external"},{"label":"GitHub","href":"https://github.com/devanshupatil/TimeStream","type":"github"}]},{"name":"Online Learning Platform","desc":"Role-based dashboards, JWT auth, course management, attendance tracking, LLM-powered question extraction.","links":[{"label":"Live","href":"https://online-learning-portal-ten.vercel.app/","type":"external"},{"label":"GitHub","href":"https://github.com/devanshupatil/Online-Learning-Portal","type":"github"}]},{"name":"SagarShop E-commerce","desc":"Full platform with admin panel, product/order management, REST APIs, Supabase.","links":[{"label":"Live","href":"https://sagar-shop.netlify.app/","type":"external"},{"label":"GitHub","href":"https://github.com/devanshupatil/Sagar-Shop","type":"github"}]},{"name":"Marriage Biodata Builder","desc":"Dynamic forms, live preview, one-click PDF generation (jsPDF).","links":[{"label":"Live","href":"https://marriage-biodata-builder.vercel.app/","type":"external"},{"label":"GitHub","href":"https://github.com/devanshupatil/marriage-biodata-builder","type":"github"}]}]'>
+              <div class="vtab-track"><div class="vtab-progress"></div></div>
+              <span class="vtab-id">/03</span>
+              <div class="vtab-content">
+                <div class="vtab-title">Full-Stack Engineer</div>
+                <div class="vtab-meta">
+                  <span class="vtab-company">Freelance & Open Source</span>
+                  <span class="vtab-period">2024 — PRESENT</span>
+                  <span class="vtab-badge">Freelance</span>
+                </div>
+                <div class="vtab-desc-wrap">
+                  <p class="vtab-desc">Built and shipped full-stack web platforms, developer tools, and privacy-first desktop applications using React, Node.js, Spring Boot, PostgreSQL, Electron, and browser-extension APIs.</p>
+                </div>
+              </div>
+            </button>
+
+            <button class="vtab-btn etab-btn" role="tab" aria-selected="false" data-index="3" data-cert="" data-cert-type="" data-cert-label="" data-projects='[]'>
+              <div class="vtab-track"><div class="vtab-progress"></div></div>
+              <span class="vtab-id">/04</span>
+              <div class="vtab-content">
+                <div class="vtab-title">Hacktoberfest Contributor</div>
+                <div class="vtab-meta">
+                  <span class="vtab-company">Open Source</span>
+                  <span class="vtab-period">2023</span>
+                  <span class="vtab-badge">Open Source</span>
+                </div>
+                <div class="vtab-desc-wrap">
+                  <p class="vtab-desc">Contributed to multiple open-source projects during Hacktoberfest 2023 — a global celebration of open-source development.</p>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Image Gallery + Certificate/Project Panel -->
+        <div class="vtabs-gallery etabs-gallery reveal" id="etabs-gallery">
+          <div class="vtabs-img-container">
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200" alt="SPCL Infotech" class="vtabs-img etabs-img active" />
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1200" alt="Search Point" class="vtabs-img etabs-img" />
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200" alt="Freelance & Open Source" class="vtabs-img etabs-img" />
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200" alt="Hacktoberfest" class="vtabs-img etabs-img" />
+            <div class="vtabs-overlay"></div>
+          </div>
+          <div class="vtabs-controls">
+            <button class="vtabs-nav-btn" id="etabs-prev" aria-label="Previous experience"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="vtabs-nav-btn" id="etabs-next" aria-label="Next experience"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+
+          <!-- Certificate/Project Detail Panel -->
+          <div class="etabs-detail" id="etabs-detail">
+            <div class="etabs-detail-header">
+              <span class="etabs-detail-title" id="etabs-detail-title">Certificates</span>
+              <a class="etabs-detail-link" id="etabs-detail-link" href="#" target="_blank" rel="noopener" style="display:none">Open ↗</a>
+            </div>
+            <div class="etabs-detail-empty" id="etabs-detail-empty">
+              <div class="etabs-detail-icon">📋</div>
+              <p>Select an experience to view certificates & projects</p>
+            </div>
+            <div class="etabs-detail-content" id="etabs-detail-content" style="display:none"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1037,7 +1444,7 @@
       <div class="timeline">
         <div class="tl-item reveal"><div class="tl-year">2026 — PRESENT</div><div class="tl-title">Master of Computer Applications (MCA)</div><div class="tl-desc">Indira Gandhi National Open University (IGNOU) · Pursuing.</div></div>
         <div class="tl-item reveal"><div class="tl-year">03/2023 — 06/2026</div><div class="tl-title">Bachelor of Science</div><div class="tl-desc">Sant Gadge Baba Amravati University · Buldhana, Maharashtra, India.</div></div>
-        <div class="tl-item reveal"><div class="tl-year">03/2022 — 03/2023</div><div class="tl-title">HSC — Higher Secondary Certificate</div><div class="tl-desc">Amravati University · Maharashtra, India.</div></div>
+        <div class="tl-item reveal"><div class="tl-year">03/2022 — 03/2023</div><div class="tl-title">HSC — Higher Secondary Certificate</div><div class="tl-desc">Maharashtra State Board of Secondary &amp; Higher Secondary Education (MSBSHSE) · Maharashtra, India.</div></div>
       </div>
     </div>
   </section>
@@ -1371,6 +1778,259 @@
       setTimeout(()=>document.body.classList.remove('flicker'), 60);
       flicker();
     }, 8000+Math.random()*5000);
+  })();
+
+  // ══════════════════════════════════════════
+  // VERTICAL TABS (SERVICES)
+  // ══════════════════════════════════════════
+  (function () {
+    const btns = document.querySelectorAll('.vtab-btn');
+    const imgs = document.querySelectorAll('.vtabs-img');
+    const prevBtn = document.getElementById('vtabs-prev');
+    const nextBtn = document.getElementById('vtabs-next');
+    const gallery = document.getElementById('vtabs-gallery');
+    if (!btns.length || !imgs.length) return;
+
+    let currentIndex = 0;
+    let autoTimer = null;
+    let isPaused = false;
+    const DURATION = 5000;
+
+    function setActive(index) {
+      btns.forEach((btn, i) => {
+        if (i === index) {
+          btn.classList.add('active');
+          btn.classList.remove('paused');
+          const prog = btn.querySelector('.vtab-progress');
+          if (prog) {
+            prog.style.animation = 'none';
+            void prog.offsetHeight; // trigger reflow
+            prog.style.animation = 'vtabFill 5s linear forwards';
+          }
+        } else {
+          btn.classList.remove('active');
+          btn.classList.remove('paused');
+          const prog = btn.querySelector('.vtab-progress');
+          if (prog) prog.style.animation = 'none';
+        }
+      });
+
+      imgs.forEach((img, i) => {
+        if (i === index) img.classList.add('active');
+        else img.classList.remove('active');
+      });
+
+      currentIndex = index;
+      resetTimer();
+    }
+
+    function nextTab() {
+      const nextIndex = (currentIndex + 1) % btns.length;
+      setActive(nextIndex);
+    }
+
+    function prevTab() {
+      const prevIndex = (currentIndex - 1 + btns.length) % btns.length;
+      setActive(prevIndex);
+    }
+
+    function startTimer() {
+      clearTimeout(autoTimer);
+      if (isPaused) return;
+      autoTimer = setTimeout(nextTab, DURATION);
+    }
+
+    function resetTimer() {
+      clearTimeout(autoTimer);
+      startTimer();
+    }
+
+    btns.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        isPaused = false;
+        setActive(index);
+      });
+    });
+
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); isPaused = false; nextTab(); });
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); isPaused = false; prevTab(); });
+
+    if (gallery) {
+      gallery.addEventListener('mouseenter', () => {
+        isPaused = true;
+        clearTimeout(autoTimer);
+        const activeBtn = document.querySelector('.vtab-btn.active');
+        if (activeBtn) activeBtn.classList.add('paused');
+      });
+      gallery.addEventListener('mouseleave', () => {
+        isPaused = false;
+        const activeBtn = document.querySelector('.vtab-btn.active');
+        if (activeBtn) activeBtn.classList.remove('paused');
+        resetTimer();
+      });
+    }
+
+    setActive(0);
+  })();
+
+  // ══════════════════════════════════════════
+  // VERTICAL TABS (EXPERIENCE)
+  // ══════════════════════════════════════════
+  (function () {
+    const btns = document.querySelectorAll('.etab-btn');
+    const imgs = document.querySelectorAll('.etabs-img');
+    const prevBtn = document.getElementById('etabs-prev');
+    const nextBtn = document.getElementById('etabs-next');
+    const gallery = document.getElementById('etabs-gallery');
+    const detail = document.getElementById('etabs-detail');
+    const detailTitle = document.getElementById('etabs-detail-title');
+    const detailLink = document.getElementById('etabs-detail-link');
+    const detailEmpty = document.getElementById('etabs-detail-empty');
+    const detailContent = document.getElementById('etabs-detail-content');
+    if (!btns.length || !imgs.length) return;
+
+    let currentIndex = 0;
+    let autoTimer = null;
+    let isPaused = false;
+    const DURATION = 5000;
+
+    function buildDetailContent(btn) {
+      const projects = btn.dataset.projects ? JSON.parse(btn.dataset.projects) : [];
+      const certUrl = btn.dataset.cert;
+      const certType = btn.dataset.certType;
+      const certLabel = btn.dataset.certLabel;
+
+      let html = '';
+
+      if (projects.length > 0) {
+        html += '<div class="etabs-project-group">';
+        html += '<div class="etabs-project-group-title">Key Projects</div>';
+        html += '<div class="etabs-projects">';
+        projects.forEach(p => {
+          html += '<div class="etabs-project">';
+          html += '<div class="etabs-project-name">' + p.name + '</div>';
+          html += '<div class="etabs-project-desc">' + p.desc + '</div>';
+          html += '<div class="etabs-project-links">';
+          p.links.forEach(l => {
+            let icon = '';
+            if (l.type === 'github') icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>';
+            else icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+            html += '<a href="' + l.href + '" target="_blank" rel="noopener noreferrer" class="etabs-project-link">' + icon + l.label + '</a>';
+          });
+          html += '</div>';
+          html += '</div>';
+        });
+        html += '</div>';
+        html += '</div>';
+      }
+
+      if (certUrl && certType) {
+        html += '<div class="etabs-certificates">';
+        html += '<a href="' + certUrl + '" target="_blank" rel="noopener noreferrer" class="etabs-cert-link">';
+        html += '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>';
+        html += certLabel;
+        html += '</a>';
+        html += '</div>';
+        detailLink.href = certUrl;
+        detailLink.classList.add('visible');
+      } else {
+        detailLink.classList.remove('visible');
+      }
+
+      return html;
+    }
+
+    function setActive(index) {
+      btns.forEach((btn, i) => {
+        if (i === index) {
+          btn.classList.add('active');
+          btn.classList.remove('paused');
+          btn.setAttribute('aria-selected', 'true');
+          const prog = btn.querySelector('.vtab-progress');
+          if (prog) {
+            prog.style.animation = 'none';
+            void prog.offsetHeight;
+            prog.style.animation = 'vtabFill 5s linear forwards';
+          }
+        } else {
+          btn.classList.remove('active');
+          btn.classList.remove('paused');
+          btn.setAttribute('aria-selected', 'false');
+          const prog = btn.querySelector('.vtab-progress');
+          if (prog) prog.style.animation = 'none';
+        }
+      });
+
+      imgs.forEach((img, i) => {
+        if (i === index) img.classList.add('active');
+        else img.classList.remove('active');
+      });
+
+      // Update detail panel
+      const activeBtn = btns[index];
+      const html = buildDetailContent(activeBtn);
+      if (html) {
+        detailContent.innerHTML = html;
+        detailContent.style.display = 'flex';
+        detailEmpty.style.display = 'none';
+      } else {
+        detailContent.innerHTML = '';
+        detailContent.style.display = 'none';
+        detailEmpty.style.display = 'flex';
+      }
+      detailTitle.textContent = activeBtn.dataset.certLabel ? '📋 ' + activeBtn.dataset.certLabel : 'Certificates & Projects';
+
+      currentIndex = index;
+      resetTimer();
+    }
+
+    function nextTab() {
+      const nextIndex = (currentIndex + 1) % btns.length;
+      setActive(nextIndex);
+    }
+
+    function prevTab() {
+      const prevIndex = (currentIndex - 1 + btns.length) % btns.length;
+      setActive(prevIndex);
+    }
+
+    function startTimer() {
+      clearTimeout(autoTimer);
+      if (isPaused) return;
+      autoTimer = setTimeout(nextTab, DURATION);
+    }
+
+    function resetTimer() {
+      clearTimeout(autoTimer);
+      startTimer();
+    }
+
+    btns.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        isPaused = false;
+        setActive(index);
+      });
+    });
+
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); isPaused = false; nextTab(); });
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); isPaused = false; prevTab(); });
+
+    if (gallery) {
+      gallery.addEventListener('mouseenter', () => {
+        isPaused = true;
+        clearTimeout(autoTimer);
+        const activeBtn = document.querySelector('.etab-btn.active');
+        if (activeBtn) activeBtn.classList.add('paused');
+      });
+      gallery.addEventListener('mouseleave', () => {
+        isPaused = false;
+        const activeBtn = document.querySelector('.etab-btn.active');
+        if (activeBtn) activeBtn.classList.remove('paused');
+        resetTimer();
+      });
+    }
+
+    setActive(0);
   })();
 
   // ══════════════════════════════════════════
