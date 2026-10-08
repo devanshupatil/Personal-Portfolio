@@ -1103,135 +1103,89 @@
         }
         .tl-cert-badge:hover { opacity: .82; transform: translateY(-1px); }
 
-        /* ── Experience 2-col layout ── */
+        /* ── Experience 2-col layout (auto-cycling) ── */
         .exp-layout { display: grid; grid-template-columns: 1fr 380px; gap: 56px; align-items: start; }
+        .exp-timeline .tl-track {
+            position: absolute; left: -28.5px; top: 0; bottom: 0; width: 2px;
+            background: var(--border); z-index: 1;
+        }
+        .exp-timeline .tl-progress {
+            position: absolute; top: 0; left: 0; width: 100%; height: 0%;
+            background: var(--indigo);
+        }
+        .exp-timeline .tl-item.active .tl-progress { animation: expFill 6s linear forwards; }
+        .exp-timeline .tl-item.paused .tl-progress { animation-play-state: paused; }
+        @keyframes expFill { from { height: 0%; } to { height: 100%; } }
+        .exp-timeline .tl-item { cursor: pointer; }
+        .exp-timeline .tl-item::before { z-index: 2; transition: transform .3s ease, box-shadow .3s ease; }
+        .exp-timeline .tl-item.active::before {
+            background: var(--indigo); transform: scale(1.35);
+            box-shadow: 0 0 0 4px rgba(99,102,241,.18), 0 0 14px rgba(99,102,241,.7);
+        }
+        .exp-timeline .tl-year, .exp-timeline .tl-title, .exp-timeline .tl-desc { transition: opacity .35s ease; }
+        .exp-timeline.cycling .tl-item:not(.active) .tl-year,
+        .exp-timeline.cycling .tl-item:not(.active) .tl-title { opacity: .5; }
+        .exp-timeline.cycling .tl-item:not(.active) .tl-title { margin-bottom: 0; }
+        .exp-timeline.cycling .tl-item:not(.active) .tl-desc { opacity: 0; }
+        .exp-timeline.cycling .tl-item { padding-bottom: 28px; }
+        .exp-timeline.cycling .tl-desc { overflow: hidden; transition: max-height .45s cubic-bezier(0.23, 1, 0.32, 1), opacity .35s ease; }
+
         .exp-cert-panel {
             position: sticky; top: 88px;
             background: var(--surface);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(99,102,241,.4);
             border-radius: 12px;
             overflow: hidden;
-            transition: border-color .3s, box-shadow .3s;
+            box-shadow: 0 0 24px rgba(99,102,241,.12);
         }
-        .exp-cert-panel.has-cert { border-color: rgba(99,102,241,.4); box-shadow: 0 0 24px rgba(99,102,241,.12); }
         .exp-cert-panel-header {
-            display: flex; align-items: center; justify-content: space-between;
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
             padding: 12px 16px;
             background: rgba(99,102,241,.08);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid rgba(99,102,241,.25);
             min-height: 44px;
         }
-        .exp-cert-panel.has-cert .exp-cert-panel-header { border-bottom-color: rgba(99,102,241,.25); }
         .exp-cert-panel-title {
             font-size: 11px; font-weight: 700;
             color: var(--indigo); text-transform: uppercase; letter-spacing: .1em;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .exp-cert-panel-link {
-            font-size: 11px; font-weight: 700;
+            font-size: 11px; font-weight: 700; flex-shrink: 0;
             color: var(--indigo); text-decoration: none;
             display: inline-flex; align-items: center; gap: 4px;
             opacity: 0; pointer-events: none;
             transition: opacity .25s;
         }
-        .exp-cert-panel.has-cert .exp-cert-panel-link { opacity: 1; pointer-events: auto; }
+        .exp-cert-panel-link.visible { opacity: 1; pointer-events: auto; }
         .exp-cert-panel-link:hover { opacity: .72; }
-        .exp-cert-empty {
-            padding: 56px 24px; text-align: center;
-            transition: opacity .25s, max-height .3s, padding .3s;
-            max-height: 200px;
+        .exp-frame { position: relative; aspect-ratio: 10/7; overflow: hidden; background: var(--bg); }
+        .exp-slide {
+            position: absolute; inset: 0;
+            opacity: 0; transform: translateY(24px) scale(1.03);
+            transition: opacity .45s ease, transform .45s ease;
+            pointer-events: none;
         }
-        .exp-cert-empty-icon { font-size: 36px; margin-bottom: 12px; opacity: .35; }
-        .exp-cert-empty-text { font-size: 12px; color: var(--muted); line-height: 1.7; }
-        .exp-cert-img-wrap {
-            background: #fff;
-            opacity: 0; max-height: 0; overflow: hidden;
-            transition: opacity .3s ease, max-height .35s ease;
+        .exp-slide.active { opacity: 1; transform: none; pointer-events: auto; z-index: 1; }
+        .exp-slide-cert { background: #fff; }
+        .exp-slide-cert img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .exp-slide-cert iframe { width: 100%; height: 100%; border: none; display: block; background: #fff; }
+        .exp-slide-card {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 10px; padding: 24px; text-align: center;
+            background: radial-gradient(circle at 50% 35%, rgba(99,102,241,.22), transparent 65%), var(--surface);
         }
-        .exp-cert-panel.has-cert .exp-cert-img-wrap { opacity: 1; max-height: 420px; }
-        .exp-cert-panel.has-cert .exp-cert-empty { opacity: 0; max-height: 0; overflow: hidden; padding: 0; }
-        .exp-cert-img-wrap img { width: 100%; display: block; }
-        .exp-cert-img-wrap iframe { width: 100%; height: 260px; border: none; display: block; background: #fff; }
+        .exp-slide-card-icon { font-size: 52px; line-height: 1; }
+        .exp-slide-card-title { font-size: 18px; font-weight: 700; color: var(--text); }
+        .exp-slide-card-sub { font-size: 12px; color: var(--muted); line-height: 1.6; }
         .exp-cert-footer {
             padding: 10px 16px;
             border-top: 1px solid var(--border);
             font-size: 12px; color: var(--muted);
-            opacity: 0; transition: opacity .25s;
             min-height: 36px;
         }
-        .exp-cert-panel.has-cert .exp-cert-footer { opacity: 1; }
         @media(max-width:1100px) { .exp-layout { grid-template-columns: 1fr 300px; gap: 36px; } }
-        @media(max-width:900px)  { .exp-layout { grid-template-columns: 1fr; } .exp-cert-panel { position: static; } }
-
-        /* ── Vertical Tabs (Services) ── */
-        .vtabs-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: center; }
-        .vtabs-list { display: flex; flex-direction: column; gap: 0; position: relative; }
-        .vtab-btn {
-            background: none; border: none; padding: 24px 0 24px 28px; text-align: left;
-            cursor: pointer; position: relative; display: flex; align-items: flex-start; gap: 16px;
-            border-top: 1px solid var(--border); transition: color .3s ease;
-            color: var(--muted); width: 100%;
-        }
-        .vtab-btn:first-child { border-top: none; }
-        .vtab-track {
-            position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border);
-        }
-        .vtab-progress {
-            position: absolute; top: 0; left: 0; width: 100%; height: 0%;
-            background: var(--indigo); transform-origin: top;
-        }
-        .vtab-btn.active .vtab-progress {
-            animation: vtabFill 5s linear forwards;
-        }
-        .vtabs-gallery:hover .vtab-btn.active .vtab-progress,
-        .vtab-btn.paused .vtab-progress {
-            animation-play-state: paused;
-        }
-        @keyframes vtabFill {
-            from { height: 0%; }
-            to { height: 100%; }
-        }
-        .vtab-id { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; opacity: .5; margin-top: 4px; }
-        .vtab-content { flex: 1; display: flex; flex-direction: column; gap: 8px; }
-        .vtab-title { font-size: 26px; font-weight: 500; letter-spacing: -.02em; color: var(--muted); transition: color .3s ease; }
-        .vtab-btn.active .vtab-title, .vtab-btn:hover .vtab-title { color: var(--text); }
-        .vtab-desc-wrap {
-            max-height: 0; opacity: 0; overflow: hidden;
-            transition: max-height .4s cubic-bezier(0.23, 1, 0.32, 1), opacity .3s ease;
-        }
-        .vtab-btn.active .vtab-desc-wrap { max-height: 120px; opacity: 1; }
-        .vtab-desc { font-size: 13px; color: var(--muted); line-height: 1.6; padding-bottom: 4px; }
-        
-        .vtabs-gallery {
-            position: relative; aspect-ratio: 16/11; border-radius: 24px;
-            overflow: hidden; background: var(--surface); border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,.3);
-        }
-        .vtabs-img-container { width: 100%; height: 100%; position: relative; overflow: hidden; }
-        .vtabs-img {
-            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-            opacity: 0; transform: translateY(40px) scale(1.03); transition: opacity .45s ease, transform .45s ease;
-        }
-        .vtabs-img.active { opacity: 1; transform: translateY(0) scale(1); z-index: 1; }
-        .vtabs-overlay {
-            position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.5), transparent 40%);
-            pointer-events: none; z-index: 2;
-        }
-        .vtabs-controls {
-            position: absolute; bottom: 20px; right: 20px; display: flex; gap: 10px; z-index: 10;
-        }
-        .vtabs-nav-btn {
-            width: 44px; height: 44px; border-radius: 50%;
-            background: rgba(11,11,18,.75); backdrop-filter: blur(8px);
-            border: 1px solid var(--border); color: var(--text);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all .2s ease;
-        }
-        .vtabs-nav-btn:hover { background: var(--surface); border-color: var(--indigo); transform: scale(1.05); }
-        .vtabs-nav-btn:active { transform: scale(0.92); }
-        @media(max-width:900px) {
-            .vtabs-grid { grid-template-columns: 1fr; gap: 32px; }
-            .vtabs-gallery { aspect-ratio: 4/3; }
-        }
+        @media(max-width:900px)  { .exp-layout { grid-template-columns: 1fr; } .exp-cert-panel { position: static; order: -1; } }
 
         .tl-desc {
             font-size: 14px;
@@ -1618,7 +1572,6 @@
             </a>
             <nav class="nav-links">
                 <a href="#about">About</a>
-                <a href="#services">Services</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
                 <a href="#resume">Experience</a>
@@ -1751,84 +1704,6 @@
         </div>
     </section>
 
-    <!-- ═══ SERVICES (VERTICAL TABS) ═══ -->
-    <section class="section" id="services">
-        <div class="container">
-            <div class="vtabs-grid">
-                <!-- LEFT: Vertical Tabs Content -->
-                <div class="vtabs-left">
-                    <div style="margin-bottom:36px">
-                        <h2 class="section-title reveal" style="font-size:clamp(28px, 3.5vw, 44px);margin-bottom:6px">How I can help you</h2>
-                        <span class="section-label reveal" style="font-size:10px;letter-spacing:0.3em;text-transform:uppercase">(SERVICES)</span>
-                    </div>
-
-                    <div class="vtabs-list">
-                        <!-- Tab 1 -->
-                        <button class="vtab-btn active" data-index="0">
-                            <div class="vtab-track">
-                                <div class="vtab-progress"></div>
-                            </div>
-                            <span class="vtab-id">/01</span>
-                            <div class="vtab-content">
-                                <div class="vtab-title">Web Development</div>
-                                <div class="vtab-desc-wrap">
-                                    <p class="vtab-desc">Creating beautiful, functional, and user-centric digital experiences with modern web standards, React, and responsive CSS.</p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <!-- Tab 2 -->
-                        <button class="vtab-btn" data-index="1">
-                            <div class="vtab-track">
-                                <div class="vtab-progress"></div>
-                            </div>
-                            <span class="vtab-id">/02</span>
-                            <div class="vtab-content">
-                                <div class="vtab-title">Full-Stack Platforms</div>
-                                <div class="vtab-desc-wrap">
-                                    <p class="vtab-desc">Building high-performance APIs, role-based dashboards, authentication systems, and database integrations with Node.js, Spring Boot, and PostgreSQL.</p>
-                                </div>
-                            </div>
-                        </button>
-
-                        <!-- Tab 3 -->
-                        <button class="vtab-btn" data-index="2">
-                            <div class="vtab-track">
-                                <div class="vtab-progress"></div>
-                            </div>
-                            <span class="vtab-id">/03</span>
-                            <div class="vtab-content">
-                                <div class="vtab-title">Desktop &amp; Extensions</div>
-                                <div class="vtab-desc-wrap">
-                                    <p class="vtab-desc">Crafting privacy-first desktop software with Electron, browser extensions for Chrome/Firefox, and custom local developer utilities.</p>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- RIGHT: Interactive Gallery -->
-                <div class="vtabs-gallery reveal" id="vtabs-gallery">
-                    <div class="vtabs-img-container">
-                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&amp;w=1200" alt="Web Development" class="vtabs-img active" />
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&amp;w=1200" alt="Full-Stack Platforms" class="vtabs-img" />
-                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&amp;w=1200" alt="Desktop &amp; Extensions" class="vtabs-img" />
-                        <div class="vtabs-overlay"></div>
-                    </div>
-
-                    <div class="vtabs-controls">
-                        <button class="vtabs-nav-btn" id="vtabs-prev" aria-label="Previous service">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                        </button>
-                        <button class="vtabs-nav-btn" id="vtabs-next" aria-label="Next service">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ═══ SKILLS ═══ -->
     <section class="section" id="skills" style="background:var(--surface)">
         <div class="container">
@@ -1930,6 +1805,28 @@
 
                 <div class="glass proj-card reveal">
                     <div class="proj-img">
+                        <img src="projectThumbnail/medifind.png" alt="MediFind" />
+                    </div>
+                    <div class="proj-body">
+                        <div class="proj-icon">💊</div>
+                        <h4 class="proj-title">MediFind</h4>
+                        <p class="proj-desc">AI-powered medicine search and inventory app — snap a photo of a medicine
+                            strip and Groq Vision (Llama 4 Scout) reads the label, fuzzy-matches it, and shows live
+                            stock &amp; pricing. Includes voice search, Hindi/Marathi support, and an admin dashboard.</p>
+                        <div class="proj-footer" style="flex-direction:column; align-items:flex-start; gap:12px;">
+                            <div class="proj-techs">React · Vite · Tailwind CSS · Supabase · Groq Vision AI</div>
+                            <div style="display:flex;gap:8px;">
+                                <a href="https://github.com/devanshupatil/MediFind" target="_blank" rel="noopener"
+                                    class="proj-btn outline" style="padding:6px 14px;font-size:12px;">📂 GitHub</a>
+                                <a href="https://medifind11.netlify.app/" target="_blank" rel="noopener"
+                                    class="proj-btn primary" style="padding:6px 14px;font-size:12px;">🚀 Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass proj-card reveal">
+                    <div class="proj-img">
                         <img src="projectThumbnail/timestream.png" alt="TimeStream" />
                     </div>
                     <div class="proj-body">
@@ -2027,8 +1924,9 @@
 
             <div class="exp-layout">
                 <!-- LEFT: Timeline -->
-                <div class="timeline">
-                    <div class="tl-item reveal" data-cert="../Certificates/SPCL.png" data-cert-issuer="SPCL Infotech Services Pvt. Ltd." data-cert-link="../Certificates/SPCL.png">
+                <div class="timeline exp-timeline" id="exp-timeline">
+                    <div class="tl-item reveal" data-exp-label="SPCL Infotech Services Pvt. Ltd." data-exp-link="Certificates/SPCL.png" data-exp-footer="Certificate · Full Stack Web Developer Trainee">
+                        <div class="tl-track"><div class="tl-progress"></div></div>
                         <div class="tl-year">FEB 2026 — MAY 2026</div>
                         <div class="tl-title">Full Stack Web Developer Trainee — SPCL Infotech Services Pvt. Ltd. · Full-time<span class="tl-cert-badge" title="View certificate">🏅 Certificate</span></div>
                         <div class="tl-desc">Delivering full-stack web development projects as part of a structured
@@ -2059,7 +1957,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="tl-item reveal" data-cert="../Certificates/search point internship certificate.pdf" data-cert-issuer="Search Point" data-cert-link="../Certificates/search point internship certificate.pdf" data-cert-is-pdf="true">
+                    <div class="tl-item reveal" data-exp-label="Search Point" data-exp-link="Certificates/search point internship certificate.pdf" data-exp-footer="Certificate · Frontend Developer Intern">
+                        <div class="tl-track"><div class="tl-progress"></div></div>
                         <div class="tl-year">FEB 2026 — MAR 2026</div>
                         <div class="tl-title">Frontend Developer Intern — Search Point<span class="tl-cert-badge" title="View certificate">🏅 Certificate</span></div>
                         <div class="tl-desc">Built responsive UIs, improved user experience, and integrated APIs
@@ -2068,19 +1967,8 @@
                             Issued a Verified Achievement Record on completion.
                         </div>
                     </div>
-                    <div class="tl-item reveal">
-                        <div class="tl-year">2024 — PRESENT</div>
-                        <div class="tl-title">Full-Stack Engineer — Freelance &amp; Open Source</div>
-                        <div class="tl-desc">Built and shipped full-stack web platforms, developer tools, and privacy-first desktop applications using React, Node.js, Spring Boot, PostgreSQL, Electron, and browser-extension APIs.
-                            <ul style="margin-top:10px;margin-left:16px;line-height:2.2;color:inherit;">
-                                <li>⏱️ <strong><a href="https://timestream.netlify.app/" target="_blank" rel="noopener" style="color:var(--indigo)">TimeStream v1.2.0</a></strong> — Fully local developer-activity tracker with a companion Chrome/Firefox extension and AI-assisted filtering. <a href="https://github.com/devanshupatil/TimeStream" target="_blank" rel="noopener" style="color:var(--indigo);font-size:11px;font-weight:600">[GitHub]</a></li>
-                                <li>🎓 <strong><a href="https://online-learning-portal-ten.vercel.app/" target="_blank" rel="noopener" style="color:var(--indigo)">Online Learning Platform (LMS)</a></strong> — Role-based dashboards, JWT auth, course management, attendance tracking, and LLM-powered question extraction. <a href="https://github.com/devanshupatil/Online-Learning-Portal" target="_blank" rel="noopener" style="color:var(--indigo);font-size:11px;font-weight:600">[GitHub]</a></li>
-                                <li>🛒 <strong><a href="https://sagar-shop.netlify.app/" target="_blank" rel="noopener" style="color:var(--indigo)">SagarShop E-commerce</a></strong> — Full e-commerce platform with admin panel, product &amp; order management, REST APIs, and Supabase integration. <a href="https://github.com/devanshupatil/Sagar-Shop" target="_blank" rel="noopener" style="color:var(--indigo);font-size:11px;font-weight:600">[GitHub]</a></li>
-                                <li>📄 <strong><a href="https://marriage-biodata-builder.vercel.app/" target="_blank" rel="noopener" style="color:var(--indigo)">Marriage Biodata Builder</a></strong> — PDF-generation tool with dynamic forms, live preview, and one-click export. <a href="https://github.com/devanshupatil/marriage-biodata-builder" target="_blank" rel="noopener" style="color:var(--indigo);font-size:11px;font-weight:600">[GitHub]</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tl-item reveal">
+                    <div class="tl-item reveal" data-exp-label="Hacktoberfest 2023" data-exp-footer="Open-source contributions">
+                        <div class="tl-track"><div class="tl-progress"></div></div>
                         <div class="tl-year">2023</div>
                         <div class="tl-title">Hacktoberfest Contributor</div>
                         <div class="tl-desc">Contributed to multiple open-source projects during Hacktoberfest 2023
@@ -2088,20 +1976,26 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: Certificate card panel -->
-                <div class="exp-cert-panel" id="exp-cert-panel">
+                <!-- RIGHT: Frame that follows the active entry -->
+                <div class="exp-cert-panel reveal" id="exp-cert-panel">
                     <div class="exp-cert-panel-header">
-                        <span class="exp-cert-panel-title" id="exp-cert-panel-title">🏅 Certificates</span>
-                        <a class="exp-cert-panel-link" id="exp-cert-panel-link" href="#" target="_blank" rel="noopener">Open full ↗</a>
+                        <span class="exp-cert-panel-title" id="exp-cert-panel-title">🏅 SPCL Infotech Services Pvt. Ltd.</span>
+                        <a class="exp-cert-panel-link visible" id="exp-cert-panel-link" href="Certificates/SPCL.png" target="_blank" rel="noopener">Open full ↗</a>
                     </div>
-                    <div class="exp-cert-empty" id="exp-cert-empty">
-                        <div class="exp-cert-empty-icon">🏅</div>
-                        <div class="exp-cert-empty-text">Hover over an experience entry<br>to view its certificate here.</div>
+                    <div class="exp-frame">
+                        <div class="exp-slide exp-slide-cert active">
+                            <img src="Certificates/SPCL.png" alt="SPCL Infotech training certificate" loading="lazy" />
+                        </div>
+                        <div class="exp-slide exp-slide-cert">
+                            <iframe data-src="Certificates/search%20point%20internship%20certificate.pdf#toolbar=0&amp;navpanes=0&amp;view=FitH" title="Search Point internship certificate" loading="lazy"></iframe>
+                        </div>
+                        <div class="exp-slide exp-slide-card">
+                            <div class="exp-slide-card-icon">🎃</div>
+                            <div class="exp-slide-card-title">Hacktoberfest 2023</div>
+                            <div class="exp-slide-card-sub">Contributed to multiple open-source<br>projects worldwide.</div>
+                        </div>
                     </div>
-                    <div class="exp-cert-img-wrap" id="exp-cert-img-wrap">
-                        <img id="exp-cert-img" src="" alt="Certificate" />
-                    </div>
-                    <div class="exp-cert-footer" id="exp-cert-footer"></div>
+                    <div class="exp-cert-footer" id="exp-cert-footer">Certificate · Full Stack Web Developer Trainee</div>
                 </div>
             </div>
         </div>
@@ -2420,157 +2314,108 @@
         }, { threshold: 0.3 });
         document.querySelectorAll('.skill-card').forEach(c => barObserver.observe(c));
 
-        // ── Vertical Tabs (Services) ──
+        // ── Experience Timeline (auto-cycling) ──
         (function () {
-            const btns = document.querySelectorAll('.vtab-btn');
-            const imgs = document.querySelectorAll('.vtabs-img');
-            const prevBtn = document.getElementById('vtabs-prev');
-            const nextBtn = document.getElementById('vtabs-next');
-            const gallery = document.getElementById('vtabs-gallery');
-            if (!btns.length || !imgs.length) return;
-
-            let currentIndex = 0;
-            let autoTimer = null;
-            let isPaused = false;
-            const DURATION = 5000;
-
-            function setActive(index) {
-                btns.forEach((btn, i) => {
-                    if (i === index) {
-                        btn.classList.add('active');
-                        btn.classList.remove('paused');
-                        const prog = btn.querySelector('.vtab-progress');
-                        if (prog) {
-                            prog.style.animation = 'none';
-                            void prog.offsetHeight; // trigger reflow
-                            prog.style.animation = 'vtabFill 5s linear forwards';
-                        }
-                    } else {
-                        btn.classList.remove('active');
-                        btn.classList.remove('paused');
-                        const prog = btn.querySelector('.vtab-progress');
-                        if (prog) prog.style.animation = 'none';
-                    }
-                });
-
-                imgs.forEach((img, i) => {
-                    if (i === index) img.classList.add('active');
-                    else img.classList.remove('active');
-                });
-
-                currentIndex = index;
-                resetTimer();
-            }
-
-            function nextTab() {
-                const nextIndex = (currentIndex + 1) % btns.length;
-                setActive(nextIndex);
-            }
-
-            function prevTab() {
-                const prevIndex = (currentIndex - 1 + btns.length) % btns.length;
-                setActive(prevIndex);
-            }
-
-            function startTimer() {
-                clearTimeout(autoTimer);
-                if (isPaused) return;
-                autoTimer = setTimeout(nextTab, DURATION);
-            }
-
-            function resetTimer() {
-                clearTimeout(autoTimer);
-                startTimer();
-            }
-
-            btns.forEach((btn, index) => {
-                btn.addEventListener('click', () => {
-                    isPaused = false;
-                    setActive(index);
-                });
-            });
-
-            if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); isPaused = false; nextTab(); });
-            if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); isPaused = false; prevTab(); });
-
-            if (gallery) {
-                gallery.addEventListener('mouseenter', () => {
-                    isPaused = true;
-                    clearTimeout(autoTimer);
-                    const activeBtn = document.querySelector('.vtab-btn.active');
-                    if (activeBtn) activeBtn.classList.add('paused');
-                });
-                gallery.addEventListener('mouseleave', () => {
-                    isPaused = false;
-                    const activeBtn = document.querySelector('.vtab-btn.active');
-                    if (activeBtn) activeBtn.classList.remove('paused');
-                    resetTimer();
-                });
-            }
-
-            setActive(0);
-        })();
-
-        // ── Experience Certificate Panel ──
-        (function () {
+            const timeline = document.getElementById('exp-timeline');
             const panel    = document.getElementById('exp-cert-panel');
+            if (!timeline || !panel) return;
+            const items    = Array.from(timeline.querySelectorAll('.tl-item'));
+            const slides   = Array.from(panel.querySelectorAll('.exp-slide'));
             const title    = document.getElementById('exp-cert-panel-title');
             const link     = document.getElementById('exp-cert-panel-link');
-            const imgWrap  = document.getElementById('exp-cert-img-wrap');
-            const imgEl    = document.getElementById('exp-cert-img');
             const footer   = document.getElementById('exp-cert-footer');
-            if (!panel) return;
+            if (!items.length || items.length !== slides.length) return;
 
-            let hideTimer;
+            // With reduced motion the global rule shrinks the fill to ~0ms,
+            // so autoplay would spin through entries; hover/click still works.
+            const autoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let current = 0, hovering = false, inView = false;
 
-            function showCert(item) {
-                clearTimeout(hideTimer);
-                const src    = item.dataset.cert;
-                const issuer = item.dataset.certIssuer || 'Certificate';
-                const href   = item.dataset.certLink || src;
-                const isPdf  = item.dataset.certIsPdf === 'true';
+            function loadSlide(slide) {
+                const frame = slide.querySelector('iframe[data-src]');
+                if (frame) { frame.src = frame.dataset.src; frame.removeAttribute('data-src'); }
+            }
 
-                title.textContent   = '🏅 ' + issuer;
-                link.href           = href;
-                footer.textContent  = issuer;
+            function syncPause() {
+                const active = items[current];
+                active.classList.toggle('paused', hovering || !inView);
+            }
 
-                if (isPdf) {
-                    imgEl.style.display = 'none';
-                    let iframe = imgWrap.querySelector('iframe');
-                    if (!iframe) {
-                        iframe = document.createElement('iframe');
-                        iframe.title = 'Certificate';
-                        imgWrap.appendChild(iframe);
+            const descs = items.map(item => item.querySelector('.tl-desc'));
+
+            // Only the active entry is expanded. Reserve room for
+            // the tallest entry so the sections below don't jump on every change.
+            function layout() {
+                descs.forEach(d => { d.style.transition = 'none'; d.style.maxHeight = '0px'; });
+                timeline.style.minHeight = '';
+                const base = timeline.offsetHeight;
+                const tallest = Math.max(...descs.map(d => d.scrollHeight));
+                timeline.style.minHeight = (base + tallest) + 'px';
+                descs.forEach((d, i) => {
+                    if (i === current) d.style.maxHeight = d.scrollHeight + 'px';
+                    void d.offsetHeight;
+                    d.style.transition = '';
+                });
+            }
+
+            function setActive(index) {
+                current = index;
+                descs.forEach((d, i) => { d.style.maxHeight = i === index ? d.scrollHeight + 'px' : '0px'; });
+                items.forEach((item, i) => {
+                    item.classList.remove('active', 'paused');
+                    if (i === index) {
+                        void item.offsetHeight; // restart the fill animation
+                        item.classList.add('active');
                     }
-                    iframe.src = href;
-                } else {
-                    const iframe = imgWrap.querySelector('iframe');
-                    if (iframe) iframe.src = '';
-                    imgEl.style.display = 'block';
-                    imgEl.src = src;
-                }
+                });
+                slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+                loadSlide(slides[index]);
 
-                panel.classList.add('has-cert');
+                const item = items[index];
+                const href = item.dataset.expLink;
+                title.textContent  = '🏅 ' + item.dataset.expLabel;
+                footer.textContent = item.dataset.expFooter || '';
+                link.classList.toggle('visible', !!href);
+                if (href) link.href = href;
+                syncPause();
             }
 
-            function hideCert() {
-                hideTimer = setTimeout(() => panel.classList.remove('has-cert'), 150);
-            }
-
-            document.querySelectorAll('.tl-item[data-cert]').forEach(item => {
-                item.addEventListener('mouseenter', () => showCert(item));
-                item.addEventListener('mouseleave', hideCert);
-                const badge = item.querySelector('.tl-cert-badge');
-                if (badge) {
-                    badge.addEventListener('click', e => {
-                        e.stopPropagation();
-                        panel.classList.contains('has-cert') ? hideCert() : showCert(item);
-                    });
-                }
+            items.forEach((item, i) => {
+                const prog = item.querySelector('.tl-progress');
+                prog.addEventListener('animationend', () => {
+                    if (autoplay && i === current) setActive((current + 1) % items.length);
+                });
+                item.addEventListener('mouseenter', () => {
+                    hovering = true;
+                    if (i !== current) setActive(i); else syncPause();
+                });
+                item.addEventListener('click', e => {
+                    if (e.target.closest('a')) return;
+                    if (i !== current) setActive(i);
+                });
             });
 
-            panel.addEventListener('mouseenter', () => clearTimeout(hideTimer));
-            panel.addEventListener('mouseleave', hideCert);
+            [timeline, panel].forEach(el => {
+                el.addEventListener('mouseenter', () => { hovering = true; syncPause(); });
+                el.addEventListener('mouseleave', () => { hovering = false; syncPause(); });
+            });
+
+            if (!autoplay) {
+                items.forEach(item => item.querySelector('.tl-progress').style.animation = 'none');
+            }
+
+            new IntersectionObserver(entries => {
+                inView = entries[0].isIntersecting;
+                syncPause();
+            }, { threshold: 0.2 }).observe(timeline);
+
+            timeline.classList.add('cycling');
+            layout();
+            setActive(0);
+
+            let resizeTimer;
+            window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(layout, 150); });
+            if (document.fonts) document.fonts.ready.then(layout);
         })();
 
         // ── Contact Form (custom validation + EmailJS with fallback) ──
